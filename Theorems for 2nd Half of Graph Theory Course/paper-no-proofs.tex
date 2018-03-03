@@ -1,0 +1,508 @@
+\documentclass[12pt]{amsart}
+
+\usepackage{enumerate, color, amssymb, amsmath, amsfonts, amsthm, graphics, mathrsfs}
+%\usepackage[hmargin=1 in, vmargin = 0.5 in]{geometry}
+
+%%%%%%% Pagestyle stuff %%%%%%%%%%%%%%%%%%%
+ \usepackage{fancyhdr}                   %%
+   \pagestyle{fancy}                     %%
+   \fancyhf{} %delete the current section for header and footer
+ \usepackage[paperheight=11in,%          %%
+             paperwidth=8.5in,%          %%
+             outer=1.2in,%               %%
+             inner=1.2in,%               %%
+             bottom=.7in,%               %%
+             top=.7in,%                  %%
+             includeheadfoot]{geometry}  %%
+   \addtolength{\headwidth}{.75in}       %%
+   \fancyhead[RO,LE]{\thepage}           %%
+   \fancyhead[RE,LO]{\sectionname}       %%
+   \setlength{\headheight}{15.8pt}       %%
+   \raggedbottom                         %%
+%%%%%%% End Pagestyle stuff %%%%%%%%%%%%%%%
+
+% When you first define a new word, use this macro to make it stand out
+% EG We say that an abelian group $I$ is \newword{injective} if, for any
+% injection $G \to H$, and any map $G \to I$, there is a map $H \to I$ making the
+% obvious diagram commute.
+\newcommand{\newword}[1]{\textbf{\emph{#1}}}
+
+%Arrows
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
+
+%Things LaTeX names by appearance, rather than meaning
+% By now, I've learned the standard LaTeX names, but I remember they used to give me trouble, so here are some macros
+\newcommand{\isom}{\cong} %The isomorphism symbol
+\newcommand{\union}{\cup}
+\newcommand{\intersection}{\cap}
+\newcommand{\bigunion}{\bigcup}
+\newcommand{\bigintersection}{\bigcap}
+\newcommand{\disjointunion}{\sqcup}
+\newcommand{\bigdisjointunion}{\bigsqcup}
+\newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
+
+%Some multiletter functions
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\CoKer}{CoKer}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Endo}{End}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\renewcommand{\Im}{\mathop{\mathrm{Im}}}
+%Their calligraphic versions; use these for the sheaf constructions
+\DeclareMathOperator{\HHom}{\mathcal{H} \textit{om}}
+\DeclareMathOperator{\EExt}{\mathcal{E} \textit{xt}}
+\DeclareMathOperator{\EEnd}{\mathcal{E} \textit{nd}}
+\DeclareMathOperator{\TTor}{\mathcal{T} \textit{or}}
+\DeclareMathOperator{\KKer}{\mathcal{K}\textit{er}}
+\DeclareMathOperator{\CCoKer}{\mathcal{C} \textit{o}\mathcal{K} \textit{er}}
+\newcommand{\IIm}{\mathop{\mathcal{I} \textit{m}}}
+\newcommand{\ccH}{\mathscr{H}} %The very curly H
+
+%This makes alternating tensors look right in displayed equations
+\newcommand{\Alt}{\bigwedge\nolimits}
+
+\newcommand{\mf}[1]{\mathfrak{#1}}
+
+%Blackboard bold letters.
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+%Calligraphic letters
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fh}{\mathfrak{h}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\GL}{\text{GL}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{expl}[thm]{Example}
+\newtheorem{expls}[thm]{Examples}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{example}[thm]{Example}
+
+\title{MAT5105 study notes}
+\author{Robert Lech}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Planar Graphs}
+
+% Jordan-Curve Theorem
+\begin{thm} (Jordan-Curve Theorem)
+
+A Jordan curve $J$ in the plane separates the rest of the plane into two disjoint open sets $int(J)$ and $ext(J)$ (with their respective closures $Int(J)$ and $Ext(J)$ intersecting in $J$). Any arc with origin in $int(J)$ and terminus in $ext(J)$ must intersect $J$ in at least one point.
+\end{thm}
+
+
+% Non-Planar
+\begin{thm} (Non-Planar)
+
+$K_5$ and $K_{3,3}$ are non-planar.
+\end{thm}
+
+
+% Proper Face Conditions
+\begin{thm} (Proper Face Conditions)
+
+If $G$ is non-separable, and $G\ncong K_1, K_2$ $\Rightarrow$ the boundary of each face is a cycle.
+\end{thm}
+
+
+% Swap Inner Face with Outer Face
+\begin{prop} (Swap Inner Face with Outer Face)
+
+Let $G$ be a planar graph with a planar embedding $\widetilde{G}$. Take any face $f\in F(\widetilde{G})$. Then $G$ has a planar embedding such that $\partial(f)$ is the boundary of the outer face.
+\end{prop}
+
+
+% Subdivision Planarity 
+\begin{prop} (Subdivision Planarity)
+
+$G$ is a planar graph $\Longleftrightarrow$ every subdivision of $G$ is planar.
+\end{prop}
+
+
+% $K_5$ and $K_{3,3}$ Subdivisions are not Planar
+\begin{cor} ($K_5$ and $K_{3,3}$ Subdivisions are not Planar)
+
+Every subdivision of $K_5$ and $K_{3,3}$ is not planar.
+\end{cor}
+
+
+% [KURATOWSKI] NASC for Planarity 
+\begin{thm} (KURATOWSKI) (NASC for Planarity)
+
+$G$ is a planar graph $\Longleftrightarrow$ $G$ contains no subdivision of $K_5$ or $K_{3,3}$.
+\end{thm}
+
+
+% NASC for Embeddability 
+\begin{thm} (NASC for Embeddability)
+
+$G$ is a embeddable on a plane $\Longleftrightarrow$ $G$ is a embeddable on a sphere 
+\end{thm}
+
+
+% Dual Facts 
+\begin{lem} (Dual Facts)
+
+Let $G$ be a plane graph, $G^*$ its dual. Then:
+\begin{itemize}
+  \item $|V(G^*)|=|F(G)|$
+  \item $|E(G^*)|=|E(G)|$
+  \item $d_G(f)=d_{G^*}(f^*), \forall f\in F(G)$
+\end{itemize}
+
+\end{lem}
+
+
+%Faces-Edge Relation 
+\begin{cor} (Faces-Edge Relation)
+
+$\sum_{f\in F(G)} d_G(f)=2|E(G)|$
+\end{cor}
+
+
+%Euler's Formula 
+\begin{thm} (Euler's Formula)
+
+$G$ connected graph on a surface with characteristic $\sigma$ $\implies$ $|V|-|E|+|F|=\sigma$.
+\end{thm}
+
+
+%Euler's Formula Corollary 
+\begin{cor} (Euler's Formula Corollary)
+
+Let $G$ be a connected and planar. Then
+\begin{itemize}
+  \item All planar embeddings of $G$ have the same number of faces.
+  \item If $G$ is simple and $n\geq 3$, then $|E| \leq 3|V|-6$.
+  \item If $G$ is simple and $n\geq 3$, then $\delta(G) \leq 5$.
+\end{itemize}
+\end{cor}
+
+
+%Non-Planar
+\begin{cor} (Non-Planar)
+
+$K_5$ and $K_{3,3}$ are non-planar.
+\end{cor}
+
+
+\section{Stable Sets, Cliques, and Colourings}
+
+%Clique/Stable Set Connection 
+\begin{lem} (Clique/Stable Set Connection)
+
+$S$ is a stable set of $G$ $\Longleftrightarrow$ $S$ is a clique of $\overline{G}$.
+\end{lem}
+
+
+%Lower Bound on $\chi$ with $\alpha$
+\begin{lem} (Lower Bound on $\chi$ with $\alpha$)
+
+$\chi \geq n/\alpha$
+\end{lem}
+
+
+%Upper on Chromatic Number for Subgraph $ 
+\begin{lem} (Bound on Chromatic Number for Subgraph)
+
+If $H \subseteq G$, then $\chi(H) \leq \chi(G)$
+\end{lem}
+
+
+%Lower Bound on $\chi$ with $\omega$
+\begin{cor} (Lower Bound on $\chi$ with $\omega$)
+
+$\chi \geq \omega$
+\end{cor}
+
+
+%Upper Bound on $\chi$ with $\Delta$
+\begin{cor} (Upper Bound on $\chi$ with $\Delta$)
+
+$\chi \leq \Delta+1$
+\end{cor}
+
+
+%Critical Implies Connected
+\begin{lem} (Critical Implies Connected)
+
+If $G$ is critical, then $G$ is connected.
+\end{lem}
+
+
+%Critical Implies Bound on $\delta$
+\begin{thm} (Critical Implies Bound on $\delta$)
+
+If $G$ is $k-$critical, then $\delta(G)\geq k-1$
+\end{thm}
+
+
+%Chromatic and Degree of Vertices
+\begin{cor} (Chromatic and Degree of Vertices)
+
+If $G$ is $k-$chromatic, then $G$ has $k$ vertices $(v_1,\ldots, v_k)$ such that $d(v_i)\geq k-1$
+\end{cor}
+
+
+%Upper Bound on $\chi$ with $\Delta$
+\begin{cor} (Upper Bound on $\chi$ with $\Delta$)
+
+$\chi \leq \Delta+1$
+\end{cor}
+
+
+%NC for $S-$component
+\begin{thm} (NC for $S-$component)
+
+If $G$ is $k-$critical and $S$ is a vx cut of $G$, then $S$ is not a clique.
+\end{thm}
+
+
+%NC for $\{u\}-$component
+\begin{cor} (NC for $\{u\}-$component)
+
+If $G$ is $k-$critical and $S=\{u\}$ is a vx cut of $G$, then $v$ is not a separating vertex.
+\end{cor}
+
+
+%NC for $\{u,v\}-$component
+\begin{cor} (NC for $\{u,v\}-$component)
+
+If $G$ is $k-$critical and $S=\{u,v\}$ is a vx cut of $G$, then $u\nsim v$.
+\end{cor}
+
+
+%[DIRAC] Type-1, Type-2 Subgraphs for $\{u,v\}-$components
+\begin{thm} (DIRAC) (Type-1, Type-2 Subgraphs for $\{u,v\}-$components)
+
+If $G$ is $k-$critical and $S=\{u,v\}$ is a vx cut of $G$, then:
+\begin{itemize}
+  \item $G=G_1+G_2$, where $G_1$ is type-1 and $G_2$ is type-2.
+  \item $G+uv$ and $G_2/\{u,v\}$ are $k-$critical.
+\end{itemize}
+\end{thm}
+
+
+%Critical Implies Bound on Degrees
+\begin{cor}(Critical Implies Bound on Degrees)
+
+Let $G$ is $k-$critical and $S=\{u,v\}$ is a vx cut of $G$, then $d_G(u)+d_G(v)\geq 3k-5$.
+\end{cor}
+
+
+%1,2,3-Critical Graphs
+\begin{lem}($1,2,3-$Critical Graphs)
+
+Let $G$ is $k-$critical. Then:
+\begin{itemize}
+  \item $k=1\implies G \cong K_1$
+  \item $k=2\implies G \cong K_2$
+  \item $k=3\implies G \cong C_{2k+1}$
+\end{itemize}
+\end{lem}
+
+
+%[Brooks 1941] Better Bound on $\chi$
+\begin{thm} (BROOKS 1941) (Better Bound on $\chi$)
+
+Let $G$ be a connected, simple graph where $G\ncong K_n, G\ncong C_{2l+1}$ then $\chi(G)\leq \Delta(G)$. 
+\end{thm}
+
+
+\section{Matchings and Coverings}
+
+% [BERGE] Augmenting Paths and Maximal Matching
+\begin{thm} (BERGE) (Augmenting Paths and Maximal Matching)
+
+Let $M$ be a matching of $G$. Then $M$ is maximum if and only if $G$ contains no $M$-augmenting path.
+\end{thm}
+
+
+% [TUTTE] Perfect Matchings and \# Odd Components with Vertex Cu
+\begin{thm} (TUTTE) (Perfect Matchings and \# Odd Components with Vertex Cut)
+
+Let $G$ be a connected, simple graph. $G$ has a perfect matching if and only if $o(G-S) \leq |S|$ for all $S \subseteq V$.
+\end{thm}
+
+
+% [PETERSEN] Perfect Matchings and 3-Regular Graphs
+\begin{thm} (PETERSEN) (Perfect Matchings and 3-Regular Graphs)
+
+If $G$ is a $3$-regular graph without cut edges, then $G$ has a perfect matching.
+\end{thm}
+
+
+% [HALL] NASC for Saturated Matching in Bipartite Graphs
+\begin{thm} (HALL) (NASC for Saturated Matching in Bipartite Graphs)
+
+Let $G$ be a bipartite graph with bipartition $(X,Y)$. Then $G$ contains a matching that saturates
+every vertex in $X$ if and only if $|N(S)| \geq |S|$ for all $S \subseteq X$.
+\end{thm}
+
+
+% [MARRIAGE] Perfect Matching and Regular Bipartite Graphs
+\begin{thm} (HALL/MARRIAGE THEOREM) (Perfect Matching and Regular Bipartite Graphs)
+
+If $G$ is a $k$-regular bipartite graph with $k > 0$, then $G$ has a perfect matching.
+\end{thm}
+
+
+% Regular Graphs and 1-Factorizations
+\begin{thm} (Regular Graphs and 1-Factorizations)
+
+If $G$ is a $k$-regular graph with $k > 0$, then $G$ has a 1-factorization.
+\end{thm}
+
+
+% [K\"{O}NIG-EGERV\'{A}RY] Maximum Matching and Minimum Covering in Bipartite Graphs
+\begin{thm} (K\"{O}NIG-EGERV\'{A}RY) (Maximum Matching and Minimum Covering in Bipartite Graphs)
+
+If $G$ is a bipartite graph with a maximum matching $M^*$ and a minimum covering $\widetilde{K}$, then $|M^*|=|\widetilde{K}|$
+\end{thm}
+
+
+\section{Hamilton Graphs}
+
+
+% Hamilton Cycle and \# Components with Vertex Cut
+\begin{thm} (Hamilton Cycle and \# Components with Vertex Cut)
+
+Let $G$ be a Hamilton graph. Then $\forall S\subset V,$ $S\neq \emptyset,$ $c(G-S)\leq |S|$.
+\end{thm}
+
+% [BONDY-CHVATAL] Conditions for when $G$ Hamiltonian $\Longleftrightarrow$ $G+uv$ Hamiltonian
+\begin{lem} (BONDY-CHVATAL) (Conditions for when $G$ Hamiltonian $\Longleftrightarrow$ $G+uv$ Hamiltonian)
+
+Let $G$ be a simple graph of order $n$. Let $u$ and $v$ be non-adjacent vertices with $d(u) + d(v) \geq n$. Then $G$ is Hamiltonian if and only if $G+uv$ is Hamiltonian.
+\end{lem}
+
+
+% [DIRAC] $\delta\geq \frac{n}{2}$ implies Hamiltonian
+\begin{thm} (DIRAC 2) ($\delta\geq \frac{n}{2}\implies$ Hamiltonian)
+
+Let $G$ be a simple graph of order $n \geq 3$ and minimum degree $\delta \geq n/2$. Then $G$ is Hamiltonian.
+\end{thm}
+
+% $cl(G)$ Closure Hamiltonian $\Longleftrightarrow$ $G$ Hamiltonian
+\begin{cor} ($cl(G)$ Hamiltonian $\Longleftrightarrow$ $G$ Hamiltonian)
+
+Let $G$ be a simple graph. Then $G$ is Hamiltonian if and only if the closure is Hamiltonian.
+\end{cor}
+
+
+% $cl(G)$ Complete $\implies$ $G$ Hamiltonian
+\begin{cor} ($cl(G)$ Complete $\implies$ $G$ Hamiltonian)
+
+Let $G$ be a simple graph with $n\geq 3$ and $cl(G)\cong K_n$. Then $G$ is Hamiltonian.
+\end{cor}
+
+
+% [CHVATAL]  Stupid Conditions $\implies$ Hamiltonian
+\begin{thm} (CHVATAL) (Stupid Conditions $\implies$ Hamiltonian)
+
+Let $G$ be a simple graph of order $n \geq 3$ with degree sequence $(d_1,d_2,\ldots,d_n)$, where
+$d_1 \leq d_2 \leq \ldots \leq d_n$. Suppose that there is no value of $k$ less than $n/2$ for which
+$d_k \leq k$ and $d_{n-k} \leq n-k$. Then $G$ is Hamiltonian.
+\end{thm}
+
+\section{Edge-Colourings}
+
+% $\chi'$ and $\Delta$
+\begin{lem} ($\chi'$ and $\Delta$)
+
+Let $G$ be a graph. Then $\chi' \geq \Delta$.
+\end{lem}
+
+% [VIZING] Simple Graph, $\chi'$ and $\Delta$
+\begin{thm} (VIZING) (Simple Graph, $\chi'$ and $\Delta$)
+
+Let $G$ be a simple graph. Then $\chi' = \Delta$ (Class 1) or $\chi' = \Delta+1$ (Class 2).
+\end{thm}
+
+
+% Multiple Edge Graph, $\chi'$ and $\Delta$
+\begin{lem} (Multiple Edge Graph, $\chi'$ and $\Delta$)
+
+Let $G$ be a graph. Suppose $\mu=\#$ of edges between $u,v$, $\forall u,v\in V(G)$. Then $\chi' \leq \Delta+\mu$
+\end{lem}
+
+
+% Bipartite Graph, $\chi'$ and $\Delta$
+\begin{thm} (Bipartite Graph, $\chi'$ and $\Delta$)
+
+Let $G$ be a graph. If $G$ is bipartite, then $\chi' = \Delta$.
+\end{thm}
+
+\end{document}

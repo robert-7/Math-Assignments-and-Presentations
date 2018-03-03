@@ -1,0 +1,407 @@
+\documentclass[12pt]{amsart}
+
+\usepackage{enumerate, color, amssymb, amsmath, amsfonts, amsthm, graphics, mathrsfs}
+%\usepackage[hmargin=1 in, vmargin = 0.5 in]{geometry}
+
+%%%%%%% Pagestyle stuff %%%%%%%%%%%%%%%%%%%
+ \usepackage{fancyhdr}                   %%
+   \pagestyle{fancy}                     %%
+   \fancyhf{} %delete the current section for header and footer
+ \usepackage[paperheight=11in,%          %%
+             paperwidth=8.5in,%          %%
+             outer=1.2in,%               %%
+             inner=1.2in,%               %%
+             bottom=.7in,%               %%
+             top=.7in,%                  %%
+             includeheadfoot]{geometry}  %%
+   \addtolength{\headwidth}{.75in}       %%
+   \fancyhead[RO,LE]{\thepage}           %%
+   \fancyhead[RE,LO]{\sectionname}       %%
+   \setlength{\headheight}{15.8pt}       %%
+   \raggedbottom                         %%
+%%%%%%% End Pagestyle stuff %%%%%%%%%%%%%%%
+
+% When you first define a new word, use this macro to make it stand out
+% EG We say that an abelian group $I$ is \newword{injective} if, for any
+% injection $G \to H$, and any map $G \to I$, there is a map $H \to I$ making the
+% obvious diagram commute.
+\newcommand{\newword}[1]{\textbf{\emph{#1}}}
+
+%Arrows
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
+
+%Things LaTeX names by appearance, rather than meaning
+% By now, I've learned the standard LaTeX names, but I remember they used to give me trouble, so here are some macros
+\newcommand{\isom}{\cong} %The isomorphism symbol
+\newcommand{\union}{\cup}
+\newcommand{\intersection}{\cap}
+\newcommand{\bigunion}{\bigcup}
+\newcommand{\bigintersection}{\bigcap}
+\newcommand{\disjointunion}{\sqcup}
+\newcommand{\bigdisjointunion}{\bigsqcup}
+\newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
+
+%Some multiletter functions
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\CoKer}{CoKer}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Endo}{End}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\renewcommand{\Im}{\mathop{\mathrm{Im}}}
+%Their calligraphic versions; use these for the sheaf constructions
+\DeclareMathOperator{\HHom}{\mathcal{H} \textit{om}}
+\DeclareMathOperator{\EExt}{\mathcal{E} \textit{xt}}
+\DeclareMathOperator{\EEnd}{\mathcal{E} \textit{nd}}
+\DeclareMathOperator{\TTor}{\mathcal{T} \textit{or}}
+\DeclareMathOperator{\KKer}{\mathcal{K}\textit{er}}
+\DeclareMathOperator{\CCoKer}{\mathcal{C} \textit{o}\mathcal{K} \textit{er}}
+\newcommand{\IIm}{\mathop{\mathcal{I} \textit{m}}}
+\newcommand{\ccH}{\mathscr{H}} %The very curly H
+
+%This makes alternating tensors look right in displayed equations
+\newcommand{\Alt}{\bigwedge\nolimits}
+
+\newcommand{\mf}[1]{\mathfrak{#1}}
+
+%Blackboard bold letters.
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\BB}{\mathbb{B}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+\newcommand{\JJ}{\mathbb{J}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\LL}{\mathbb{L}}
+\newcommand{\MM}{\mathbb{M}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\renewcommand{\SS}{\mathbb{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\UU}{\mathbb{U}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\XX}{\mathbb{X}}
+\newcommand{\YY}{\mathbb{Y}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+%Calligraphic letters
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fh}{\mathfrak{h}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\GL}{\text{GL}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{expl}[thm]{Example}
+\newtheorem{expls}[thm]{Examples}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{example}[thm]{Example}
+
+\title{MAT5105 study notes}
+\author{Nigel Redding}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% BERGE
+\begin{thm} (Berge's theorem)
+Let $M$ be a matching of $G$.
+Then $M$ is maximal if and only if $G$ contains no $M$-augmenting path.
+\end{thm}
+
+\begin{proof}
+$(\Rightarrow)$ Suppose $M$ is a maximal matching. Suppose for a contradiction that $G$ does indeed
+contain an $M$-augmenting path $P = v_0 v_1 \ldots v_{2m} v_{2m+1}$. Then define
+$$M' = (M \setminus \{v_1 v_2, v_3 v_4, \ldots, v_{2m-1} v_{2m}\}) 
+       \cup \{v_0 v_1, \ldots, v_{2m} v_{2m+1}\}.$$
+Then $|M'| = |M| - m + (m+1) = |M|+1$. Thus $M$ is not maximal. A contradiction.\\
+
+$(\Leftarrow)$. Suppose $G$ does not contain an $M$-augmenting path. Then suppose for a contradiction
+that $M$ is not maximal. Then there is a matching $M'$ such that $|M'| > |M|$. Then look at the graph
+$H = G[M \triangle M']$. Each vertex in $H$ has degree at most $2$, obviously. Write
+$H = \cup_{i=1}^k G_i$ where $G_1,\ldots,G_k$ are the connected components of $H$. Each $G_i$ is either
+a path or a cycle. Pick one, $G_j$, that has more edges in $M'$ than $M$. One can easily get an $M$-augmnenting
+path out of $G_j$.
+\end{proof}
+
+% TUTTE
+\begin{thm} (Tutte's theorem)
+$G$ has a perfect matching if and only if $o(G-S) \leq |S|$ for all $S \subseteq V$.
+\end{thm}
+
+\begin{proof}
+Not on exam.
+\end{proof}
+
+% PETERSEN
+\begin{thm} (Petersen's theorem)
+If $G$ is a $3$-regular graph without cut edges, then $G$ has a perfect matching.
+\end{thm}
+
+\begin{proof}
+We use Tutte's theorem. Let $S \subseteq V$. Let $G_1,\ldots,G_n$ be the odd components
+of $G-S$. Let $V_i = V(G_i)$ and $E_i = E(G_i)$. Let $m_i$ be the number of edges with one end in 
+$V_i$ and one end in $S$. Then $$\sum\limits_{v \in V_i} d_G(v_i) = 2|E_i| + m_i$$ and also
+$$\sum\limits_{v \in V_i} d_G(v_i) = 3|V_i|.$$ These imply that $m_i$ is odd. Also, since $G$ has no cut edges,
+$m_i \geq 3$. Hence 
+
+\begin{align*}
+	o(G-S) &= n \leq \dfrac{1}{3} \sum\limits_{i=1}^n m_i \\
+	       &\leq \dfrac{1}{3} \sum\limits_{v \in S} d(v) \\
+	       &= |S|
+\end{align*}
+
+and this completes the proof.
+\end{proof}
+
+% DIRAC
+\begin{thm} (Dirac's theorem)
+Let $G$ be a simple graph of order $n \geq 3$ and minimum degree $\delta \geq n/2$. Then $G$ is Hamiltonian.
+\end{thm}
+
+\begin{proof}
+Suppose that there exists a graph $G$ of order $n \geq 3$ with $\delta \geq n/2$ which is not Hamiltonian.
+We can assume such a graph is maximal. Then $G$ is not complete, as $n \geq 3$ (obvious Hamiltonian cycle).
+So there exist verticies $u,v \in V$ such that $u$ is not adjacent to $v$. Then as $G$ is maximal,
+$G+uv$ has a Hamilton cycle. Thus we get a Hamilton path $v_0 v_1 \ldots v_k$ in $G$, with $u = v_0$ and
+$v = v_k$. Let $S = \{v_i : u v_{i+1} \in E\}$ and $T = \{v_i : v v_i \in E\}$. Then
+if $S \cap T \neq \emptyset$, then we could find a Hamilton cycle in $G$, 
+which we cannot do. Thus, $S \cap T = \emptyset$. So 
+$$d(u) + d(v) = |S| + |T| = |S \cup T| + |S \cap T| < n$$ contradicting our hypothesis that $\delta \geq n/2$. 
+\end{proof}
+
+% BONDY-CHVATAL
+\begin{lem} (Bondy-Chvatal Lemma)
+Let $G$ be a simple graph of order $n$. Let $u$ and $v$ be non-adjacent verticies with
+$d(u) + d(v) \geq n$. Then $G$ is Hamiltonian if and only if $G+uv$ is Hamiltonian.
+\end{lem}
+
+\begin{proof}
+$(\Rightarrow)$. Suppose $G$ is Hamiltonian. Then surely $G+uv$ is as well. This is obvious.\\
+
+$(\Leftarrow)$. Suppose $G+uv$ is Hamiltonian, but $G$ is not. 
+Get a Hamilton path in $G$ as above. Set up $S$ and $T$
+as above. Get $S \cap T = \emptyset$ as above. Get a contradiction, as above.
+\end{proof}
+
+\begin{thm} (Bondy-Chvatal theorem)
+Let $G$ be a simple graph. Then $G$ is Hamiltonian if and only if the closure is Hamiltonian.
+\end{thm}
+
+\begin{proof}
+Obviously, if $G$ is Hamiltonian, then so is the closure. Conversely, suppose the closure is Hamiltonian.
+Let $e_1,\ldots,e_k$ be the edges added to $G$ to get the closure $c(G)$. Then for
+$1 \leq i \leq k$, set $E_i = \{e_1,\ldots,e_k\}$. Then 
+
+\begin{align*}
+	G \text{ is Hamiltonian } & \iff G+E_1 \text{ is Hamiltonian } \\
+				  & \iff G+E_2 \text{ is Hamiltonian } \\
+				  & \ldots \\
+				  & \iff G+E_{k-1} \text{ is Hamiltonian } \\
+				  & \iff G+E_k = c(G) \text{ is Hamiltonian } 
+\end{align*}
+
+and the last is surely a true statement, making the first true as well.
+\end{proof}
+
+% Chvatal
+\begin{thm}
+Let $G$ be a simple graph of order $n \geq 3$ with degree sequence $(d_1,d_2,\ldots,d_n)$, where
+$d_1 \leq d_2 \leq \ldots \leq d_n$. Suppose that there is no value of $m$ less than $n/2$ for which
+$d_m \leq m$ and $d_{n-m} \leq n-m$. Then $G$ is Hamiltonian.
+\end{thm}
+
+\begin{proof}
+Let $G$ satisfy the hypotheses of the theorem. By the Bondy-Chvatal theorem, it is enough to show that
+the closure $c(G)$ is complete and hence Hamiltonian (from which it follows that $G$ is Hamiltonian).
+For a vertex $v$ of $c(G)$, we denote its degree by $d'(v)$.
+
+Assume for a contradiction that $c(G)$ is not complete. Let $u$ and $v$ be non-adjacent verticies of
+$c(G)$ with $d'(u) \leq d'(v)$, and $d'(u) + d'(v)$ as large as possible. Since we are working in the
+closure, we must have $d'(u) + d'(v) < n$.
+
+Now let $S$ be the set of verticies in $V \setminus \{v\}$ which are non-adjacent to $v$ in $c(G)$.
+Let $T$ be the set of verticies in $V \setminus \{u\}$ which are non-adjacent to $u$ in $c(G)$. It is
+clear that $$|S| = n - 1 - d'(v) \text{ and } |T| = n - 1 - d'(u).$$ By the choice of $u$ and $v$,
+every vertex in $S$ has degree at most $d'(u)$, and every vertex in $T \cup \{u\}$ has degree
+at most $d'(v)$. Setting $d'(u) = m$, we find that $c(G)$ has at least $m$ verticies of
+degree at most $m$ and at least $n-m$ verticies of degree less than $n-m$. 
+\end{proof}
+
+% HALL
+\begin{thm} (Hall's theorem)
+Let $G$ be a bipartite graph with bipartition $(X,Y)$. Then $G$ contains a matching that saturates
+every vertex in $X$ if and only if $|N(S)| \geq |S|$ for all $S \subseteq X$.
+\end{thm}
+
+\begin{proof}
+$(\Rightarrow).$ Obvious.\\
+
+$(\Leftarrow).$ Suppose $|N(S)| \geq |S|$ for all $S \subseteq X$.
+Let $m = |X|$. We proceed by induction on $m$. When $m=1$, the theorem is obvious. Assume it holds
+for $k \in \{1,\ldots,m-1\}$.  There are two cases.\\
+
+\emph{Case 1.} Suppose $|N(S)| \geq |S|+1$ for all $S \subseteq V_1$. Then let $e = v_1 v_2 \in E$ be an 
+arbitrary edge. Then let $G' = G \setminus \{v_1,v_2\}$. Clearly $G'$ satisfies Hall's condition, and so
+by induction it has a matching saturating $V_1$. Complete the matching in the obvious way.\\
+
+\emph{Case 2.} Suppose $|N(T)| = |T|$ for some $T \subseteq V_1$. Then let 
+$G' = G[T \cup N(T)]$ and $G'' = G[(V_1 \setminus T) \cup (V_2 \setminus N(T)]$. Both of these satisfy Hall's conditon
+and thus both have matchings by induction, the first saturating $T$ and the second saturating $V_1 \setminus T$. 
+Merge these two to get a matching of $G$ saturating $V_1$.
+
+\end{proof}
+
+% MARRIAGE
+\begin{thm} (Hall's Marriage theorem)
+If $G$ is a $k$-regular bipartite graph with $k > 0$, then $G$ has a perfect matching.
+\end{thm}
+
+\begin{proof}
+Let $S \subseteq X$. By Hall's theorem it is enough to show that 
+$|N(S)| \geq |S|$. Let $E_1$ be the set of edges incident with $S$, and let 
+$E_2$ be the set of edges incident with $N(S)$. By definition,
+$E_1 \subseteq E_2$. Thus, $$k |N(S)| = |E_2| \geq |E_1| = k|S|$$ which implies $|N(S)| \geq |S|$.
+\end{proof}
+
+% VIZING
+\begin{thm} (Vizing's theorem)
+$\Delta \leq \chi' \leq \Delta+1$.
+\end{thm}
+
+\begin{proof}
+Not on exam.
+\end{proof}
+
+\begin{lem}
+Suppose $G$ is not an odd cycle. Then $G$ has a $2$-edge colouring in which both colours are 
+represented at each vertex of degree at least $2$.
+\end{lem}
+
+\begin{proof}
+We have two cases. First, suppose $G$ is Eulerian. If $G$ is an even cycle, then the claim is obvious.
+Suppose that $G$ is not an even cycle. Then, as $G$ is Eulerian, each vertex has degree $\geq 2$.
+But since $G$ is not an even cycle, some vertex $v_0$ must have degree $\geq 4$. Let our euler tour
+$P$ be given by $P = v_0 e_1 v_1 e_2 \ldots e_k v_k e_{k+1} v_0$. Then define
+$E_1 = \{e_i : i \text{ even}\}$ and $E_2 = \{e_i : i \text{ odd}\}$. Clearly
+$(E_1,E_2)$ is a $2$-edge colouring of $G$ and has the desired properties.\\
+
+Now suppose $G$ is not Eulerian. Add a ``dummy'' vertex $v_0$ to $G$, and add an edge between $v_0$
+and all vertecies of odd degree. Call the resulting graph $G'$. Obviously $G'$ is indeed Eulerian,
+and thus has an euler tour $v_0 e_1 \ldots e_k v_k e_{k+1} v_0$. Then define $(E_1,E_2)$ as above. Then
+$(E_1 \cap E, E_2 \cap E)$ is a $2$-colouring with the desired properties.
+\end{proof}
+
+\begin{lem}
+Let $\cC = (E_1,\ldots,E_k)$ be an optimal $k$-edge colouring of $G$. 
+If there is a vertex $u$ in $G$ and colours $i$ and $j$ such that $i$ is not represented at 
+$u$, but $j$ is represented at $u$ at least twice, then the component
+of $G[E_i \cup E_j]$ containing $u$ is an odd cycle.
+\end{lem}
+
+\begin{proof}
+Suppose the component of $G[E_i \cup E_j]$ containing $u$, call it $U$, is \emph{not} an odd cycle.
+Then by the last theorem, there is a $2$-edge colouring $\cD$ of $U$ in which both colours are represented
+at $u$. Then recolour the edges of $H$ using $\cD$ and colour all the other edges with $\cC$. This new colouring,
+$\cC'$, is such that $$\sum c'(v) > \sum c(v)$$ which shows that $\cC$ is not optimal. A contradiction.
+\end{proof}
+
+\begin{thm}
+If $G$ is bipartite, then $\chi' = \Delta$.
+\end{thm}
+
+\begin{proof}
+Well, obviously $\chi' \geq \Delta$. Suppose for a contradiction
+that $\chi' > \Delta$. Let $\cC = (E_1,\ldots,E_\Delta)$ be an optimal 
+$\Delta$-edge colouring of $G$. Then there must be some vertex $u$ such that
+$c(u) < d(u)$. So, there are colours $i,j$ of $\cC$ such that $i$ is not represented
+at $u$, but $j$ is represented at least twice at $u$. Then the component of $G[E_i \cup E_j]$ 
+containing $u$ is an odd cycle. But that means $G$ is not bipartite. A contradiction.
+\end{proof}
+
+\begin{prop}
+$S \subseteq V$ is independent if and only if $V \setminus S$ is a covering.
+\end{prop}
+
+\begin{proof}
+Suppose $S$ is independent. Then let $e = xy \in E$. It is not possible for both $x$ and
+$y$ to be members of $S$. Thus, at least one of $x$ or $y$ is in $V \setminus S$. So every edge
+of $G$ has at least one end in $V \setminus S$, so $V \setminus S$ is a covering.
+
+Suppose $V \setminus S$ is a covering. Then let $x$ and $y$ be distinct members of $S$. Then one
+cannot have $x \sim_G y$, since then we would have an edge with both ends in $S$, contradicting the
+hypothesis that $V \setminus S$ is a covering.
+\end{proof}
+
+Define $\alpha$ to be the maximum cardinality of an indpendent set and define $\beta$ to be the
+minimum cardinality of a covering.
+
+\begin{prop}
+$\alpha + \beta = |V|$.
+\end{prop}
+
+\begin{proof}
+Let $A$ be a maximum indepdendent set and let $B$ be a mimimum covering. Then
+
+\begin{align*}
+	|V| - \alpha &= |V \setminus A| \geq \beta \\
+	|V| - \beta  &= |V \setminus B| \leq \alpha \\
+\end{align*}
+
+And thus both relations $|V| \geq \alpha + \beta$ and $|V| \leq \alpha + \beta$ hold.
+Thus $|V| = \alpha + \beta$.
+\end{proof}
+
+\end{document}
+

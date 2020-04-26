@@ -29,7 +29,8 @@ matrix:
         - sudo apt-get install chktex
       script:
         - chktex -W # Print version information.
-        - chktex -q -n 6 *.tex chapters.*.tex 2>/dev/null | tee lint.out
+        # - chktex -q -n 6 *.tex chapters.*.tex 2>/dev/null | tee lint.out
+        - chktex -q -n 6 "Assignment\ 2\ on\ Free\ Groups/paper.tex" chapters.*.tex 2>/dev/null | tee lint.out
         # If lint output is non-empty report an error.
         - test ! -s lint.out
 

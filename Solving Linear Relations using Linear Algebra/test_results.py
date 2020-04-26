@@ -4,6 +4,7 @@ import math
 def cden(x, y):
     return (y - x) ** (-1)
 
+
 def c11(x, y):
     return (-1) * cden(x, y)
 

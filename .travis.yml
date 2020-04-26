@@ -1,8 +1,13 @@
 ---
-language: python
-python:
-  - "3.8"
-install:
-  - pip install flake8
-script:
-  - flake8 . --max-line-length=120
+matrix:
+  include:
+    - language: python
+      python:
+        - "3.8"
+      install:
+        - pip install flake8
+      script:
+        - flake8 . --max-line-length=120
+
+notifications:
+  email: false

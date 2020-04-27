@@ -1,26 +1,26 @@
 ---
 matrix:
   include:
-    - name: Markdown Linting
-      stage: lint
-      language: ruby
-      rvm:
-        - "2.7"
-      install:
-        - gem install mdl
-        - echo -e "all\nrule 'MD013', :line_length => 120" > custom_rules.rb
-      script:
-        - mdl . --style custom_rules.rb
+    # - name: Markdown Linting
+    #   stage: lint
+    #   language: ruby
+    #   rvm:
+    #     - "2.7"
+    #   install:
+    #     - gem install mdl
+    #     - echo -e "all\nrule 'MD013', :line_length => 120" > custom_rules.rb
+    #   script:
+    #     - mdl . --style custom_rules.rb
 
-    - name: Python Linting
-      stage: lint
-      language: python
-      python:
-        - "3.8"
-      install:
-        - pip install flake8
-      script:
-        - flake8 . --max-line-length=120
+    # - name: Python Linting
+    #   stage: lint
+    #   language: python
+    #   python:
+    #     - "3.8"
+    #   install:
+    #     - pip install flake8
+    #   script:
+    #     - flake8 . --max-line-length=120
 
     - name: Latex Linting
       stage: lint
@@ -28,13 +28,15 @@ matrix:
         - sudo apt-get install texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended 
         - sudo apt-get install chktex
       script:
-        - CHKTEX_PATH=/usr/local/share/chktexrc;  if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
-        - CHKTEX_PATH=/usr/local/share/.chktexrc; if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
-        - CHKTEX_PATH=$HOME/.chktexrc;            if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
-        - CHKTEX_PATH=$CHKTEXRC/.chktexrc;        if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
-        - CHKTEX_PATH=.chktexrc;                  if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
+        # - CHKTEX_PATH=/usr/local/share/chktexrc;  if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
+        # - CHKTEX_PATH=/usr/local/share/.chktexrc; if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
+        # - CHKTEX_PATH=$HOME/.chktexrc;            if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
+        # - CHKTEX_PATH=$CHKTEXRC/.chktexrc;        if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
+        # - CHKTEX_PATH=.chktexrc;                  if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
+        - CHKTEX_PATH=chktexrc;                  if test -f "$CHKTEX_PATH"; then echo "In $CHKTEX_PATH"; cat $CHKTEX_PATH; fi
+        - echo $CHKTEXRC
         - chktex -W # Print version information.
-        - chktex -q -n 6 */*.tex chapters.*.tex 2>/dev/null | tee lint.out
+        - chktex -q -n 3 -n 6 */*.tex chapters.*.tex 2>/dev/null | tee lint.out
         # If lint output is non-empty report an error.
         - test ! -s lint.out
 

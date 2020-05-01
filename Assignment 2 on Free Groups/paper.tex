@@ -94,7 +94,7 @@ Let $\F_2$ be a free group with basis $\{x,y\}$, and let $K$
   \item Find the fundamental domain for the action of $K$ on the Cayley graph of $\F_2$.
 \end{enumerate}
 
-\textbf{Before we begin...}
+\textbf{Before we begin\ldots}
 
 We should note that since $\phi$ is a group homomorphism, we can determine the values of $\phi(x^3)$ and
 $\phi(x^{-1})$. We see that $\phi(x^3)=\phi(x*x*x)=\phi(x)+\phi(x)+\phi(x)=1+1+1=0$. On the other hand,
@@ -137,38 +137,38 @@ $w=a_{1}^{\varepsilon_1}a_{2}^{\varepsilon_2}\ldots a_{n}^{\varepsilon_n}$ where
 \begin{align*}
 \phi(w)
 &=\phi(a_{1}^{\varepsilon_1}a_{2}^{\varepsilon_2}\ldots a_{n}^{\varepsilon_n}) \\
-&=\phi(a_{1}^{\varepsilon_1})+\phi(a_{2}^{\varepsilon_2})+\ldots +\phi(a_{n}^{\varepsilon_n}) \\
+&=\phi(a_{1}^{\varepsilon_1})+\phi(a_{2}^{\varepsilon_2})+\cdots +\phi(a_{n}^{\varepsilon_n}) \\
 &=\sum_{\varepsilon_i=1}  \phi(a_{i}^{\varepsilon_i})+\sum_{\varepsilon_i=-1}  \phi(a_{i}^{\varepsilon_i}) \\
 &=\sum_{\varepsilon_i=1}  \phi(a_{i})+\sum_{\varepsilon_i=-1}  \phi(a_{i}^{-1}) \\
 &=\sum_{\varepsilon_i=1}  1+\sum_{\varepsilon_i=-1}  2 \\
 &\equiv 0 \Mod{3}
 \end{align*}
 
-Therefore, $w\in ker(\phi)$ and so $K' \subseteq K$. Not we show that $K \subseteq K'$. That is, assume
+Therefore, $w\in \ker(\phi)$ and so $K' \subseteq K$. Not we show that $K \subseteq K'$. That is, assume
 $\phi(w)=0$, for some $w=a_{1}^{\varepsilon_1}a_{2}^{\varepsilon_2}\ldots a_{n}^{\varepsilon_n}$ where
 $a_i\in \F_2, \varepsilon_i\in \{-1, 1\}$. We need to show that $\varepsilon_i \equiv 0 \Mod{3}$. However:
 
 \begin{align*}
 \phi(w)
 &=\phi(a_{1}^{\varepsilon_1}a_{2}^{\varepsilon_2}\ldots a_{n}^{\varepsilon_n}) \\
-&=\phi(a_{1}^{\varepsilon_1})+\phi(a_{2}^{\varepsilon_2})+\ldots +\phi(a_{n}^{\varepsilon_n}) 
+&=\phi(a_{1}^{\varepsilon_1})+\phi(a_{2}^{\varepsilon_2})+\cdots +\phi(a_{n}^{\varepsilon_n}) 
 \end{align*}
 
 However, we know that $\phi(x)=\phi(y)$ and $\phi(x^{-1})=\phi(y^{-1})$. So without loss of generality:
 
 \begin{align*}
 \phi(w)
-&=\phi(a_{1}^{\varepsilon_1})+\phi(a_{2}^{\varepsilon_2})+\ldots +\phi(a_{n}^{\varepsilon_n}) \\
-&=\phi(x^{\varepsilon_1})+\phi(x^{\varepsilon_2})+\ldots +\phi(x^{\varepsilon_n}) \\
+&=\phi(a_{1}^{\varepsilon_1})+\phi(a_{2}^{\varepsilon_2})+\cdots +\phi(a_{n}^{\varepsilon_n}) \\
+&=\phi(x^{\varepsilon_1})+\phi(x^{\varepsilon_2})+\cdots +\phi(x^{\varepsilon_n}) \\
 &=\phi(x^{\varepsilon_1}x^{\varepsilon_2}\ldots x^{\varepsilon_n}) \\
-&=\phi(x^{\varepsilon_1+\varepsilon_2+\ldots +\varepsilon_n}) \\
-&=\phi(x)^{\varepsilon_1+\varepsilon_2+\ldots +\varepsilon_n}
+&=\phi(x^{\varepsilon_1+\varepsilon_2+\cdots +\varepsilon_n}) \\
+&=\phi(x)^{\varepsilon_1+\varepsilon_2+\cdots +\varepsilon_n}
 \end{align*}
 
-However, $\phi(w)=0$. Therefore, $\phi(x)^{\varepsilon_1+\varepsilon_2+\ldots +\varepsilon_n}=0$. But
-since $\phi(x)=1$ we have that $1+1+\ldots+1\equiv 0\Mod3$ (where we have
-$\varepsilon_1+\varepsilon_2+\ldots +\varepsilon_n$ ones). However, this implies 
-$\varepsilon_1+\varepsilon_2+\ldots +\varepsilon_n \equiv 0 \Mod{3}$. Therefore, $w\in K'$ and so 
+However, $\phi(w)=0$. Therefore, $\phi(x)^{\varepsilon_1+\varepsilon_2+\cdots +\varepsilon_n}=0$. But
+since $\phi(x)=1$ we have that $1+1+\cdots+1\equiv 0\Mod3$ (where we have
+$\varepsilon_1+\varepsilon_2+\cdots +\varepsilon_n$ ones). However, this implies 
+$\varepsilon_1+\varepsilon_2+\cdots +\varepsilon_n \equiv 0 \Mod{3}$. Therefore, $w\in K'$ and so 
 $K\subseteq K'$.
 
 In conclusion, $K=K'$.
@@ -184,7 +184,7 @@ $\mathcal{F}$, we can note that for every word $k\in K$ and for every $w\not\in 
 $wk\not\in K$. That is, $wk$ is not a word with exponents adding up to $0\Mod{k}$. Therefore vertices $x$
 and $x^2$, along with the edges between ($e$ and $x$) and ($x$ and $x^2$) can be added to $\mathcal{F}$.
 Lastly, adding the half-edges connected to the three vertices gives us $\mathcal{F}$. This can all be seen
-in Figure \ref{fig:fun_domain_of_K} below.
+in Figure~\ref{fig:fun_domain_of_K} below.
 
 \begin{figure}[ht]
     \centering
@@ -198,16 +198,16 @@ in Figure \ref{fig:fun_domain_of_K} below.
   \item Find a basis $S$ for the kernel $K$.
 \end{enumerate}
 
-Using Figure \ref{fig:fun_domain_of_K} as a visual aid, we see there are eight half-edges in
+Using Figure~\ref{fig:fun_domain_of_K} as a visual aid, we see there are eight half-edges in
 $\mathcal{F}$. This implies there should be four elements in our basis $S$ such that $S^{\rpm}=\left\{g\in
 K | g\mathcal{F} \cap \mathcal{F} \neq \emptyset \right\}$. These should be the elements that map ends of
 half-edges in $\mathcal{F}$ to ends of half-edges $\mathcal{F}$.  Good ones to start with are the words in
 the kernel that have `minimal' length. Apart from the identity, these are the words listed at the
 beginning of this question. Start by adding $xy^{-1}$ (which can map point $a$ to $a'$) and $x^{-1}y$
 (which can map point $b$ to $b'$) to $S$ as they are not inverses of each other. We proceed by adding
-$xxx$ (which can map point $c$ to $c'$) to $S$. We also note these three words generate $xyy, yyx,$ and
-$yyy$). We finally add $xyx$ (which can map point $d$ to $d'$) to $S$. We also note that $xy^{-1},
-x^{-1}y,$ and $xyx$  generate the remaining words $xxy, yxx,$ and $yxy$). 
+$xxx$ (which can map point $c$ to $c'$) to $S$. We also note these three words generate $xyy, yyx$, and
+$yyy$. We finally add $xyx$ (which can map point $d$ to $d'$) to $S$. We also note that $xy^{-1},
+x^{-1}y$, and $xyx$ generate the remaining words $xxy, yxx,$ and $yxy$. 
 
 At this point, all words of length 2 and 3 can be generated. Therefore, the basis for $\mathcal{F}$ is
 $S=\left\{xy^{-1}, x^{-1}y, xxx, xyx\right\}$.
@@ -219,7 +219,7 @@ Let $A$ and $B$ be non-trivial groups. Prove that the centre of $A*B$ is trivial
 Let $A$ and $B$ be non-trivial groups. Denote the centre of $G$ as
 $Z(A*B)=\{ w \in A*B | wx=xw, \forall x \in A*B \}$. Clearly the identity is in $Z(A*B)$ since the
 identity must commute with every element in a group. However, to prove that no other elements in $A*B$ are
-in $Z(A*B)$ , we'll do a proof by contradiction. That is, we'll suppose there exists a $w\in Z(A*B)$ such
+in $Z(A*B)$, we'll do a proof by contradiction. That is, we'll suppose there exists a $w\in Z(A*B)$ such
 that $w \neq 1_{A*B}$. Then this $w$ commutes with every word $x \in A*B$. We'll show this is impossible
 by finding a word, in every case, that cannot possibly commute with $w$.
 
@@ -228,7 +228,7 @@ $a_1,a_2,\ldots ,a_n, b_1,b_2,\ldots b_n$ are not the identity and $n\geq 1$. Th
 at the word $wxw^{-1}x^{-1}$. We see that:
 
 \begin{dmath}
-wxw^{-1}x^{-1}=(a_{1}b_{1}a_{2}b_{2}\ldots a_{n}b_{n})(a_{1})(b_{n}^{-1}a_{n}^{-1}\ldots b_{2}^{-1}a_{2}^{-1}b_{1}^{-1}a_{1}^{-1})(a_{1}^{-1}) \neq 1
+wxw^{-1}x^{-1}= (a_{1}b_{1}a_{2}b_{2}\ldots a_{n}b_{n}) (a_{1}) (b_{n}^{-1}a_{n}^{-1}\ldots b_{2}^{-1}a_{2}^{-1}b_{1}^{-1}a_{1}^{-1}) (a_{1}^{-1}) \neq 1
 \end{dmath}
 
 as it doesn't freely reduce.
@@ -245,7 +245,7 @@ $wxw^{-1}x^{-1}$. We see that $wxw^{-1}x^{-1}=aba^{-1}b^{-1}$ which does not red
 Suppose $w=a_{1}b_{1}a_{2}b_{2}\ldots a_{n}$, for $n\geq 2$ and where $a_1,a_2,\ldots ,a_n, b_1,b_2,\ldots b_{n-1}$ are not the identity. Then let $x=b_{n-1}$ and look at the word $wxw^{-1}x^{-1}$. We see that:
 
 \begin{dmath}
-wxw^{-1}x^{-1}=(a_{1}b_{1}a_{2}b_{2}\ldots a_{n})(b_{n-1})(a_{n}^{-1}\ldots b_{2}^{-1}a_{2}^{-1}b_{1}^{-1}a_{1}^{-1})(b_{n-1}^{-1}) \neq 1
+wxw^{-1}x^{-1}= (a_{1}b_{1}a_{2}b_{2}\ldots a_{n}) (b_{n-1}) (a_{n}^{-1}\ldots b_{2}^{-1}a_{2}^{-1}b_{1}^{-1}a_{1}^{-1}) (b_{n-1}^{-1}) \neq 1
 \end{dmath}
 
 as it doesn't freely reduce.
@@ -258,7 +258,7 @@ $wxw^{-1}x^{-1}$. We see that $wxw^{-1}x^{-1}=bab^{-1}a^{-1}$ which does not red
 $a_1,a_2,\ldots ,a_{n-1}, b_1,b_2,\ldots b_n$ are not the identity. Then let $x=a_{n-1}$ and refer to
 \textbf{Case 3} for the proof structure. 
 
-Since these 4 cases represent every non-trivial, reduced word in $A*B$ , we see that that $Z(A*B)$ must
+Since these 4 cases represent every non-trivial, reduced word in $A*B$, we see that that $Z(A*B)$ must
 be trivial.
 
 \section*{Chapter 4}
@@ -328,7 +328,12 @@ Reducing $\frac{i2^{n}+j2^{m}}{2^{mn}}$ gives us a distinct element in $S^G$.
 
 \textbf{Step 2.a.ii: Show $S^G$ is associative under composition.}
 
-Let $f_{i_1,n_1}(x), f_{i_2,n_2}(x), f_{i_3,n_3}(x)$ be $\in S^G$. Then we need to show that  $(f_{i_1,n_1}\circ f_{i_2,n_2}) \circ f_{i_3,n_3}=f_{i_1,n_1}\circ (f_{i_2,n_2} \circ f_{i_3,n_3})$. Start with the left hand side. $(f_{i_1,n_1}\circ f_{i_2,n_2}) \circ f_{i_3,n_3} = (x+\frac{i_2}{2^{n_2}}+\frac{i_1}{2^{n_1}}) \circ (x+\frac{i_3}{2^{n_3}}) = x+\frac{i_3}{2^{n_3}}+\frac{i_2}{2^{n_2}}+\frac{i_1}{2^{n_1}}$ . On the other hand, $f_{i_1,n_1}\circ (f_{i_2,n_2} \circ f_{i_3,n_3})=(x+\frac{i_1}{2^{n_1}})\circ (x+\frac{i_3}{2^{n_3}}+\frac{i_2}{2^{n_2}})=x+\frac{i_3}{2^{n_3}}+\frac{i_2}{2^{n_2}}+\frac{i_1}{2^{n_1}}$. Since the two are equal, we see associativity holds. \\
+Let $f_{i_1,n_1}(x), f_{i_2,n_2}(x), f_{i_3,n_3}(x)$ be $\in S^G$. Then we need to show that
+$(f_{i_1,n_1}\circ f_{i_2,n_2}) \circ f_{i_3,n_3}=f_{i_1,n_1}\circ (f_{i_2,n_2} \circ f_{i_3,n_3})$.
+Start with the left hand side.
+$(f_{i_1,n_1}\circ f_{i_2,n_2}) \circ f_{i_3,n_3} = (x+\frac{i_2}{2^{n_2}}+\frac{i_1}{2^{n_1}}) \circ (x+\frac{i_3}{2^{n_3}}) = x+\frac{i_3}{2^{n_3}}+\frac{i_2}{2^{n_2}}+\frac{i_1}{2^{n_1}}$. On the other
+hand, $f_{i_1,n_1}\circ (f_{i_2,n_2} \circ f_{i_3,n_3})=(x+\frac{i_1}{2^{n_1}})\circ (x+\frac{i_3}{2^{n_3}}+\frac{i_2}{2^{n_2}})=x+\frac{i_3}{2^{n_3}}+\frac{i_2}{2^{n_2}}+\frac{i_1}{2^{n_1}}$
+. Since the two are equal, we see associativity holds. \\
 
 \textbf{Step 2.a.iii: Show $S^G$ contains the identity map under composition.}
 

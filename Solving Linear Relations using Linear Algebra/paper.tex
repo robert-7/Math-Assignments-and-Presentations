@@ -34,14 +34,14 @@ We're interested in solving:
 \label{eqn:fib_rec}
 R(n)=R(n-1)+R(n-2), R(0)=0, R(1)=1
 \footnote{The reader can note that solving this recursion with the initial 
-conditions $R(0)=0, R(1)=1$ or doing so with the intial conditions 
-$R(1)=1, R(2)=1$ gives us the same closed form solution as they output the 
+conditions $R(0)=0, R(1)=1$ or doing so with the intial conditions % chktex 36
+$R(1)=1, R(2)=1$ gives us the same closed form solution as they output the % chktex 36
 same sequence. We use the former set of initial conditions because it allows 
 for less computations.}
 \end{equation}
 
 We first want to rewrite this problem as a Linear Algebra problem. To do so, 
-we'll introduce a concept called the ``Companion Matrix". Its purpose is to 
+we'll introduce a concept called the ``Companion Matrix''. Its purpose is to 
 transform a vector of sequence elements 
 $\begin{bmatrix} y_{n} \\ y_{n-1} \end{bmatrix}$
 to $\begin{bmatrix} y_{n+1} \\ y_{n} \end{bmatrix}$. 
@@ -262,9 +262,9 @@ $R(n)=\sum_{i=1}^{k}c_{i}R(n-i)$ where $c_{i}$ is a constant.
 This method has limitations. It cannot be applied to recursions of the form 
 $R(n)=\sum_{i=1}^{k}c_{i}R(n-i)$ where $c_{i}$ is not a constant. A
 simple example would be $R(n)=nR(n-1), R(1)=1$. It is quite visible from 
-telescoping that $R(n)=(n!)$ . However, one would not be able to put this into
+telescoping that $R(n)=(n!)$. However, one would not be able to put this into
 any simpler form using this method since computing 
-$\vec{C}^n=\prod_{i=1}^{n}\begin{bmatrix}i\end{bmatrix}=n!$.
+$\vec{C}^n=\prod_{i=1}^{n}\begin{bmatrix}i\end{bmatrix}=n! $.
 
 \begin{thebibliography}{9}
 %The \bibitem is to start a new reference.  Ensure that the cite_key is

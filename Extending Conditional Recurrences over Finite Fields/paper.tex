@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amsthm}
+\usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{courier}
@@ -92,13 +93,15 @@ $g(n) \equiv f(n) \pmod 5$.
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
-\hline
-$n$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\ \hline
-$f_n$ over $\mathbb{R}$ & 0 & 1 & 1 & 2 & 3 & 5 & 8 & 13 & 21 & 34 & 55 & 89 & 144 & 233 & 377 & 610 \\ \hline
-$f(n)$ over $\mathbb{R}$ & 0 & 1 & 1 & 2 & 3 & 5 & 8 & 13 & 21 & 34 & 55 & 89 & 144 & 233 & 377 & 610 \\ \hline
-$g_n$ over $\mathbb{F}_5$ & 0 & 1 & 1 & 2 & 3 & 0 & 3 & 3 & 1 & 4 & 0 & 4 & 4 & 3 & 2 & 0 \\ \hline
-$g(n)$ over $\mathbb{F}_5$ & 0 & 1 & 1 & 2 & 3 & 0 & 3 & 3 & 1 & 4 & 0 & 4 & 4 & 3 & 2 & 0 \\ \hline
+\begin{tabular}{lllllllllllllllll}
+\toprule
+$n$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15                             \\
+\midrule
+$f_n$ over $\mathbb{R}$ & 0 & 1 & 1 & 2 & 3 & 5 & 8 & 13 & 21 & 34 & 55 & 89 & 144 & 233 & 377 & 610  \\
+$f(n)$ over $\mathbb{R}$ & 0 & 1 & 1 & 2 & 3 & 5 & 8 & 13 & 21 & 34 & 55 & 89 & 144 & 233 & 377 & 610 \\
+$g_n$ over $\mathbb{F}_5$ & 0 & 1 & 1 & 2 & 3 & 0 & 3 & 3 & 1 & 4 & 0 & 4 & 4 & 3 & 2 & 0             \\
+$g(n)$ over $\mathbb{F}_5$ & 0 & 1 & 1 & 2 & 3 & 0 & 3 & 3 & 1 & 4 & 0 & 4 & 4 & 3 & 2 & 0            \\
+\bottomrule
 \end{tabular}
 \caption{The output for $f_n$, $f(n)$, $g_n$, $g(n)$}
 \label{tab:fib-output}
@@ -152,10 +155,10 @@ Otherwise, we use a proof for Theorem~\ref{thm:repeated-roots} (given and proven
 \begin{theorem}
 Let $a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_{d}a_{n-d}$ be a linear recursion of order $d$ with
 $c_i \in K$. Assume $1 - c_1x - c_2x^2 - \cdots - c_{d}x^d$ factors in $K[x]$ over its reciprocal roots - the
-$\lambda$ such that $1/\lambda$ is a root - as $(1-\lambda_{1}x)^{e_1} \cdots (1-\lambda_{r}x)^{e_r}$ where
+$\lambda$ such that $1/\lambda$ is a root - as $(1-\lambda_{1}x)^{e_1} \ldots (1-\lambda_{r}x)^{e_r}$ where
 the $\lambda_i$ are distinct and $e_i \ge 1$. A basis for the solutions of the linear recursion in $K$ is
 given by the $e_i$ sequences
-$\{\lambda_1^n\}, \{\binom{n}{1}\lambda_i^n\}, \{\binom{n}{2}\lambda_1^n\}, \cdots, \{\binom{n}{e_i-1}\lambda_1^n\}$.
+$\{\lambda_1^n\}, \{\binom{n}{1}\lambda_i^n\}, \{\binom{n}{2}\lambda_1^n\}, \ldots, \{\binom{n}{e_i-1}\lambda_1^n\}$.
 \label{thm:repeated-roots}
 \end{theorem}
 This implies that a general solution to these recurrence relations is:
@@ -199,13 +202,15 @@ The reader can find some sequence outputs in Table~\ref{tab:fib-out} and in Figu
 \ref{fig:fib_F3}~\ref{fig:fib_F5} and~\ref{fig:fib_F7} below.
 
 \begin{table}[!ht]
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
-\hline
-Term \#: & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\ \hline
-Field=2: & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1  & 1  & 0  & 1  & 1  & 0  & 1  & 1  & 0  & 1  \\ \hline
-Field=3: & 0 & 1 & 1 & 2 & 0 & 2 & 2 & 1 & 0 & 1 & 1  & 2  & 0  & 2  & 2  & 1  & 0  & 1  & 1  & 2  \\ \hline
-Field=5: & 0 & 1 & 1 & 2 & 3 & 0 & 3 & 3 & 1 & 4 & 0  & 4  & 4  & 3  & 2  & 0  & 2  & 2  & 4  & 1  \\ \hline
-Field=7: & 0 & 1 & 1 & 2 & 3 & 5 & 1 & 6 & 0 & 6 & 6  & 5  & 4  & 2  & 6  & 1  & 0  & 1  & 1  & 2  \\ \hline
+\begin{tabular}{lllllllllllllllllllll}
+\toprule
+Term \#: & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\
+\midrule
+Field=2: & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 1  & 1  & 0  & 1  & 1  & 0  & 1  & 1  & 0  & 1  \\
+Field=3: & 0 & 1 & 1 & 2 & 0 & 2 & 2 & 1 & 0 & 1 & 1  & 2  & 0  & 2  & 2  & 1  & 0  & 1  & 1  & 2  \\
+Field=5: & 0 & 1 & 1 & 2 & 3 & 0 & 3 & 3 & 1 & 4 & 0  & 4  & 4  & 3  & 2  & 0  & 2  & 2  & 4  & 1  \\
+Field=7: & 0 & 1 & 1 & 2 & 3 & 5 & 1 & 6 & 0 & 6 & 6  & 5  & 4  & 2  & 6  & 1  & 0  & 1  & 1  & 2  \\
+\bottomrule
 \end{tabular}
 \caption{Fibonacci sequence output for various finite fields}
 \label{tab:fib-out}
@@ -525,19 +530,21 @@ It's output can be seen in the table below.
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
-\hline
-Term \#:  & 0 & 1 & 2 & 3 & 4  & 5  & 6  & 7  & 8   & 9   & 10  & 11  & 12  & 13   & 14   & 15   \\ \hline
-Field=$\mathbb{R}$:  & 1 & 2 & 4 & 6 & 12 & 18 & 36 & 54 & 108 & 162 & 324 & 486 & 972 & 1458 & 2916 & 4374 \\ \hline
-Field=$\mathbb{F}_2$:  & 1 & 0 & 0 & 0 & 0  & 0  & 0  & 0  & 0   & 0   & 0   & 0   & 0   & 0    & 0    & 0    \\ \hline
-Field=$\mathbb{F}_3$:  & 1 & 2 & 1 & 0 & 0  & 0  & 0  & 0  & 0   & 0   & 0   & 0   & 0   & 0    & 0    & 0    \\ \hline
-Field=$\mathbb{F}_4$:  & 1 & 0 & 0 & 0 & 0  & 0  & 0  & 0  & 0   & 0   & 0   & 0   & 0   & 0    & 0    & 0    \\ \hline
-Field=$\mathbb{F}_5$:  & 1 & 2 & 4 & 1 & 2  & 3  & 1  & 4  & 3   & 2   & 4   & 1   & 2   & 3    & 1    & 4    \\ \hline
-Field=$\mathbb{F}_7$:  & 1 & 2 & 4 & 6 & 5  & 4  & 1  & 5  & 3   & 1   & 2   & 3   & 6   & 2    & 4    & 6    \\ \hline
-Field=$\mathbb{F}_8$:  & 1 & 0 & 0 & 0 & 0  & 0  & 0  & 0  & 0   & 0   & 0   & 0   & 0   & 0    & 0    & 0    \\ \hline
-Field=$\mathbb{F}_9$:  & 1 & 2 & 1 & 0 & 0  & 0  & 0  & 0  & 0   & 0   & 0   & 0   & 0   & 0    & 0    & 0    \\ \hline
-Field=$\mathbb{F}_{11}$: & 1 & 2 & 4 & 6 & 1  & 7  & 3  & 10 & 9   & 8   & 5   & 2   & 4   & 6    & 1    & 7    \\ \hline
-Field=$\mathbb{F}_{13}$: & 1 & 2 & 4 & 6 & 12 & 5  & 10 & 2  & 4   & 6   & 12  & 5   & 10  & 2    & 4    & 6    \\ \hline
+\begin{tabular}{lllllllllllllllll}
+\toprule
+Term \#:  & 0 & 1 & 2 & 3 & 4  & 5  & 6  & 7  & 8   & 9   & 10  & 11  & 12  & 13   & 14   & 15                \\
+\midrule
+Field=$\mathbb{R}$:  & 1 & 2 & 4 & 6 & 12 & 18 & 36 & 54 & 108 & 162 & 324 & 486 & 972 & 1458 & 2916 & 4374   \\
+Field=$\mathbb{F}_2$:  & 1 & 0 & 0 & 0 & 0  & 0  & 0  & 0  & 0   & 0   & 0   & 0   & 0   & 0    & 0    & 0    \\
+Field=$\mathbb{F}_3$:  & 1 & 2 & 1 & 0 & 0  & 0  & 0  & 0  & 0   & 0   & 0   & 0   & 0   & 0    & 0    & 0    \\
+Field=$\mathbb{F}_4$:  & 1 & 0 & 0 & 0 & 0  & 0  & 0  & 0  & 0   & 0   & 0   & 0   & 0   & 0    & 0    & 0    \\
+Field=$\mathbb{F}_5$:  & 1 & 2 & 4 & 1 & 2  & 3  & 1  & 4  & 3   & 2   & 4   & 1   & 2   & 3    & 1    & 4    \\
+Field=$\mathbb{F}_7$:  & 1 & 2 & 4 & 6 & 5  & 4  & 1  & 5  & 3   & 1   & 2   & 3   & 6   & 2    & 4    & 6    \\
+Field=$\mathbb{F}_8$:  & 1 & 0 & 0 & 0 & 0  & 0  & 0  & 0  & 0   & 0   & 0   & 0   & 0   & 0    & 0    & 0    \\
+Field=$\mathbb{F}_9$:  & 1 & 2 & 1 & 0 & 0  & 0  & 0  & 0  & 0   & 0   & 0   & 0   & 0   & 0    & 0    & 0    \\
+Field=$\mathbb{F}_{11}$: & 1 & 2 & 4 & 6 & 1  & 7  & 3  & 10 & 9   & 8   & 5   & 2   & 4   & 6    & 1    & 7  \\
+Field=$\mathbb{F}_{13}$: & 1 & 2 & 4 & 6 & 12 & 5  & 10 & 2  & 4   & 6   & 12  & 5   & 10  & 2    & 4    & 6  \\
+\bottomrule
 \end{tabular}
 \caption{Output of $q_n$ of type (2,0,1,1) over various fields}
 \label{my-label}

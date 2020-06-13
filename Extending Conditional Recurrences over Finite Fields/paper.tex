@@ -38,12 +38,12 @@ historically speaking, they seem to simply garner a mathematical curiosity. The 
 one of the oldest recurrence relations to date. This is because its simple pattern, yet complex proof
 for a solution, demonstrates its importance to their study. 
 
-However, the above mentioned examples are examples of "unconditional recurrence relations". That is,
+However, the above mentioned examples are examples of ``unconditional recurrence relations''. That is,
 the $n^{th}$ term of any sequence depends on one set of previous terms. However, we are also
 interested in recurrences whose dependency is conditional on the residue of $n$ mod $r$, where $r\in
 \mathbb{N}, r>1$. For example, sequence [A068911], found on Sloane's \textit{On-Line Encyclopedia of
-Integer Sequences}, describes "the number of $n$-step walks (each step $\pm$ 1 starting from 0) which
-are never more than 2 or less than -2"\cite{bib:gen_cond_rec}. The reader can convince themselves that
+Integer Sequences}, describes ``the number of $n$-step walks (each step $\pm$ 1 starting from 0) which
+are never more than 2 or less than -2''\cite{bib:gen_cond_rec}. The reader can convince themselves that
 if $q_n$ describes this relationship, then:
 
 \begin{align*}
@@ -68,7 +68,7 @@ T\left(\frac{n-1}{2}\right) & \equiv 1 \mod 2 \\
 
 Lastly, we're interested in understanding how to extend these recurrence relations to finite fields. One
 application of this occurs in Linear-Feedback-Shift-Registers. [They] are an efficient way of describing
-and generating certain sequences in hardware implementations \cite{bib:lfsr} and are defined over
+and generating certain sequences in hardware implementations~\cite{bib:lfsr} and are defined over
 various fields of the form $\mathbb{F}_{2}$.  
 
 For the purpose of this paper, we'll be focusing on conditional and unconditional linear recurrences.
@@ -80,14 +80,14 @@ at least note some observations about their structures.
 
 \subsection{Explanation}
 Let's go back to the Fibonacci recursion $f_n=f_{n-1}+f_{n-2}$ where $f_0=0$ and $f_1=1$. Then the
-output for the sequence can be seen in Table \ref{tab:fib-output}. Moreover, if we let
+output for the sequence can be seen in~Table \ref{tab:fib-output}. Moreover, if we let
 $f(n)=\frac{\phi^n-\overline{\phi}^n}{\sqrt{5}}, \phi=\frac{1+\sqrt{5}}{2}, \overline{\phi}=\frac{1-\sqrt{5}}{2}$,
 then we can make the observation that $f_n=f(n)$. We say that $f(n)$ is the closed-form solution to the
 linear recurrence relation $f_n$. 
 
 Similarly, we can define the Fibonacci recursion over a different field. Suppose we're interested in the
 sequence output over the field $\mathbb{F}_5$. Then let $g_n \equiv f_n \pmod 5$ and $g(n)=2n3^n$. Then
-the outputs for the sequence and function can be seen in Table \ref{tab:fib-output} and we see that
+the outputs for the sequence and function can be seen in~Table \ref{tab:fib-output} and we see that
 $g(n) \equiv f(n) \pmod 5$.
 
 \begin{table}[ht]
@@ -105,11 +105,11 @@ $g(n)$ over $\mathbb{F}_5$ & 0 & 1 & 1 & 2 & 3 & 0 & 3 & 3 & 1 & 4 & 0 & 4 & 4 &
 \end{table}
 
 We're interested in deriving the connection between the $f_n$ and $f(n)$. The author notes that this
-process is heavily derived from Conrad \cite{bib:solve-lin-rec-field}. To do so, we'll first generalize
+process is heavily derived from Conrad~\cite{bib:solve-lin-rec-field}. To do so, we'll first generalize
 our problem. Suppose our linear recurrence relation is of the form:
 
 \begin{equation}
-a_n=c_1a_{n-1}+c_2a_{n-2}+\ldots+c_da_{n-d}, a_i, c_i \in \mathbb{F}
+a_n=c_1a_{n-1}+c_2a_{n-2}+\cdots+c_{d}a_{n-d}, a_i, c_i \in \mathbb{F}
 \label{eq:general-linear-recursion}
 \end{equation}
 
@@ -117,11 +117,11 @@ where $\mathbb{F}$ is some field and $a_0, a_1, \ldots, a_{d-1} \in \mathbb{F}$ 
 we're looking for a basis of solutions in a $d$-dimensional vector space over $\mathbb{F}$. It's known
 that a solution to the sequence is an exponential of the form $\lambda^n$\cite{bib:solve-lin-rec-field}.
 Therefore, we're looking to solve the equation
-$\lambda^n=c_1\lambda^{n-1}+c_2\lambda^{n-2}+\ldots+c_d\lambda^{n-d}$. Since $0$ would not contribute to
+$\lambda^n=c_1\lambda^{n-1}+c_2\lambda^{n-2}+\cdots+c_d\lambda^{n-d}$. Since $0$ would not contribute to
 a basis of solutions, we factor about a $\lambda^{n-d}$ from the equation and we're left with solving:
 
 \begin{equation}
-\lambda^d-c_1\lambda^{d-1}-c_2\lambda^{d-2}-\ldots-c_d=0
+\lambda^d-c_1\lambda^{d-1}-c_2\lambda^{d-2}-\cdots-c_d=0
 \label{eq:char-poly}
 \end{equation}
 
@@ -129,24 +129,33 @@ The reader can note that a similar method can be used to derive the characterist
 operator, denoted $E$, is used in some methods to solve linear relations (see
 \cite{bib:successor-explained} for more information). It's defined as such: let $t_n$ be a sequence
 defined by a linear recurrence relation with constant coefficients. Then this operator is defined by
-$Et_n=t_n+1$ and $E^jt_n=t_{n+j}$\cite{bib:gen_cond_rec}. If we rewrite Equation
+$Et_n=t_n+1$ and $E^{j}t_n=t_{n+j}$\cite{bib:gen_cond_rec}. If we rewrite Equation
 \ref{eq:general-linear-recursion}, then we'll see that:
 
 \begin{align*}
 0
-&= a_n-c_1a_{n-1}-c_2a_{n-2}-\ldots-c_da_{n-d} \\
-&= E^da_{n-d}-c_1E^{d-1}a_{n-d}-c_2E^{n-d}a_{n-2}-\ldots-c_da_{n-d} \\
-&= a_{n-d}(E^d-c_1E^{d-1}-c_2E^{d-2}-\ldots-c_d)
+&= a_n-c_1a_{n-1}-c_2a_{n-2}-\cdots-c_{d}a_{n-d} \\
+&= E^{d}a_{n-d}-c_1E^{d-1}a_{n-d}-c_2E^{n-d}a_{n-2}-\cdots-c_{d}a_{n-d} \\
+&= a_{n-d}(E^d-c_1E^{d-1}-c_2E^{d-2}-\cdots-c_d)
 \end{align*}
-Substituting $E$ with $\lambda$ gives us the same characteristic polynomial (this will be helpful in the next section). We use the solutions of Equation \ref{eq:char-poly} to obtain $r$ solutions $\lambda_1$, $\lambda_2$, \ldots, $\lambda_r$, where $0<r\le d$. If there are not repeated roots, then our closed-form solution is of form in Equation \ref{eq:closed-form-no-repeated-roots}.
+Substituting $E$ with $\lambda$ gives us the same characteristic polynomial (this will be helpful in the next
+section). We use the solutions of Equation \ref{eq:char-poly} to obtain $r$ solutions $\lambda_1$,
+$\lambda_2$, \ldots, $\lambda_r$, where $0<r\le d$. If there are not repeated roots, then our closed-form
+solution is of form in Equation \ref{eq:closed-form-no-repeated-roots}.
 \begin{equation}
 f_n=\sum_{i=1}^r C_{i}\lambda_j
 \label{eq:closed-form-no-repeated-roots}
 \end{equation}
-Otherwise, we use a proof for Theorem \ref{thm:repeated-roots} (given and proven in \cite{bib:solve-lin-rec-field}) to indicate how to handle repeated roots. 
+Otherwise, we use a proof for Theorem \ref{thm:repeated-roots} (given and proven in
+\cite{bib:solve-lin-rec-field}) to indicate how to handle repeated roots. 
 \\
 \begin{theorem}
-Let $a_n = c_1a_{n-1} + c_2a_{n-2} + \ldots + c_da_{n-d}$ be a linear recursion of order $d$ with $c_i \in K$. Assume $1 - c_1x - c_2x^2 - \ldots - c_dx^d$ factors in $K[x]$ over its reciprocal roots - the $\lambda$ such that $1/\lambda$ is a root - as $(1-\lambda_1x)^{e_1} \ldots (1-\lambda_rx)^{e_r}$ where the $\lambda_i$ are distinct and $e_i \ge 1$. A basis for the solutions of the linear recursion in $K$ is given by the $e_i$ sequences $\{\lambda_1^n\}, \{\binom{n}{1}\lambda_i^n\}, \{\binom{n}{2}\lambda_1^n\}, \ldots, \{\binom{n}{e_i-1}\lambda_1^n\}$.
+Let $a_n = c_1a_{n-1} + c_2a_{n-2} + \ldots + c_da_{n-d}$ be a linear recursion of order $d$ with $c_i \in K$.
+Assume $1 - c_1x - c_2x^2 - \ldots - c_dx^d$ factors in $K[x]$ over its reciprocal roots - the $\lambda$ such
+that $1/\lambda$ is a root - as $(1-\lambda_1x)^{e_1} \ldots (1-\lambda_rx)^{e_r}$ where the $\lambda_i$ are
+distinct and $e_i \ge 1$. A basis for the solutions of the linear recursion in $K$ is given by the $e_i$
+sequences $\{\lambda_1^n\}, \{\binom{n}{1}\lambda_i^n\}, \{\binom{n}{2}\lambda_1^n\}, \ldots,
+\{\binom{n}{e_i-1}\lambda_1^n\}$.
 \label{thm:repeated-roots}
 \end{theorem}
 This implies that a general solution to these recurrence relations is:
@@ -163,7 +172,12 @@ observed regarding the sequences over various finite fields. Examples \ref{ex:fi
 \\
 
 \begin{example}
-If we're being to asked to solve $f(n)$, then we'll be asked to find the solutions over a 2-dimensional space in $\mathbb{R}$ satisfying $\lambda^2-\lambda-1=0$. We see that that solutions are $\phi=\frac{1+\sqrt{5}}{2}, \overline{\phi}=\frac{1-\sqrt{5}}{2}$. Therefore, we can conclude that $f(n)= C_1\phi^n-C_1\overline{\phi}^n$ where $\phi=\frac{1+\sqrt{5}}{2}$ and $\overline{\phi}=\frac{1-\sqrt{5}}{2}$. Solving for the initial conditions get us that $C_1=\frac{1}{\sqrt{5}}$ and $C_2=-\frac{1}{\sqrt{5}}$.
+If we're being to asked to solve $f(n)$, then we'll be asked to find the solutions over a 2-dimensional space
+in $\mathbb{R}$ satisfying $\lambda^2-\lambda-1=0$. We see that that solutions are
+$\phi=\frac{1+\sqrt{5}}{2},\overline{\phi}=\frac{1-\sqrt{5}}{2}$. Therefore, we can conclude that
+$f(n)= C_1\phi^n-C_1\overline{\phi}^n$ where $\phi=\frac{1+\sqrt{5}}{2}$ and
+$\overline{\phi}=\frac{1-\sqrt{5}}{2}$. Solving for the initial conditions get us that
+$C_1=\frac{1}{\sqrt{5}}$ and $C_2=-\frac{1}{\sqrt{5}}$.
 \label{ex:fib-sol-R}
 \end{example}
 
@@ -172,7 +186,12 @@ However, the math turns out quite different under different fields as we see in 
 \\
 
 \begin{example}
-If we're being to asked to solve $g(n)$, then we'll be asked to find the solutions over a 2-dimensional space in $\mathbb{F}_5$ satisfying $\lambda^2-\lambda-1=0$ which is equivalent to $\lambda^2+4\lambda+4=(\lambda+2)^2=(\lambda-3)^2=0$. Therefore, $3$ is a solution with multiplicity 2. Therefore, we use Equation \ref{eq:closed-form-repeated-roots} to conclude that $f(n)= C_1 3^n-C_2n 3^n$. Solving for the same initial conditions as we have for $f(n)$, we get that $C_1=0$ and $C_2=2$. Therefore, $g(n)=2n3^n$.
+If we're being to asked to solve $g(n)$, then we'll be asked to find the solutions over a 2-dimensional space
+in $\mathbb{F}_5$ satisfying $\lambda^2-\lambda-1=0$ which is equivalent to
+$\lambda^2+4\lambda+4=(\lambda+2)^2=(\lambda-3)^2=0$. Therefore, $3$ is a solution with multiplicity 2.
+Therefore, we use Equation \ref{eq:closed-form-repeated-roots} to conclude that $f(n)= C_1 3^n-C_2n 3^n$.
+Solving for the same initial conditions as we have for $f(n)$, we get that $C_1=0$ and $C_2=2$. Therefore,
+$g(n)=2n3^n$.
 \label{ex:fib-sol-F_5}
 \end{example}
 
@@ -223,7 +242,8 @@ proven in the next example.
 \\
 
 \begin{example}
-Looking at $f_n=f_{n-1}+f_{n-2}$ over $\mathbb{F}_2$, we'll see that $f_{n+3}=f_{n+2}+f_{n+1}=(f_{n+1}+f_{n})+f_{n+1}=f_{n}$.
+Looking at $f_n=f_{n-1}+f_{n-2}$ over $\mathbb{F}_2$, we'll see that
+$f_{n+3}=f_{n+2}+f_{n+1}=(f_{n+1}+f_{n})+f_{n+1}=f_{n}$.
 
 Recall that $g(n)=2n3^n$ is the closed form solution for the Fibonacci sequence over $\mathbb{F}_5$.
 Then computing $g(n+20)$ we get:
@@ -253,7 +273,10 @@ to the characteristic equation are not in your field. We see this happens in Exa
 \\
 
 \begin{example}
-If we're being to asked to solve $h(n)=h(n-3)$ over $\mathbb{F}_5$ where $h(0)=0$, $h(1)=1$, and $h(2)=2$, then we'll be asked to find the solutions over a 3-dimensional space in $\mathbb{F}_5$ satisfying $\lambda^{3}-1=(\lambda-1)(\lambda^2+\lambda+1)=0$. But under the $\mathbb{F}_5$, the $h_1(x)=x^2+x+1$ is irreducible since it has $deg(h)=2$ and $h(x)\ne 0, \forall x\in \mathbb{F}_5$. 
+If we're being to asked to solve $h(n)=h(n-3)$ over $\mathbb{F}_5$ where $h(0)=0$, $h(1)=1$, and $h(2)=2$,
+then we'll be asked to find the solutions over a 3-dimensional space in $\mathbb{F}_5$ satisfying
+$\lambda^{3}-1=(\lambda-1)(\lambda^2+\lambda+1)=0$. But under the $\mathbb{F}_5$, the $h_1(x)=x^2+x+1$ is
+irreducible since it has $deg(h)=2$ and $h(x)\ne 0, \forall x\in \mathbb{F}_5$. 
 \label{ex:cubic-irred}
 \end{example}
 
@@ -526,8 +549,9 @@ However, over other tested fields, no closed form solution can be found since $\
 \section{Conclusion}
 
 Therefore, it can be concluded that there there are many applications of finite fields to the study of linear
-recurrences. From the study of periods to the more important study of irreducibles in characteristic polynomials, for
-conditional or unconditional recurrences, these will play a role in understanding recurrences altogether. 
+recurrences. From the study of periods to the more important study of irreducibles in characteristic
+polynomials, for conditional or unconditional recurrences, these will play a role in understanding recurrences
+altogether. 
 
 \begin{thebibliography}{9}
 

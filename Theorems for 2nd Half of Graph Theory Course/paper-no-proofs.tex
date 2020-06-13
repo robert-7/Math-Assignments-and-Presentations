@@ -18,7 +18,7 @@
    \fancyhead[RO,LE]{\thepage}           %%
    \fancyhead[RE,LO]{\sectionname}       %%
    \setlength{\headheight}{15.8pt}       %%
-   \raggedbottom                         %%
+   \raggedbottom{}                       %%
 %%%%%%% End Pagestyle stuff %%%%%%%%%%%%%%%
 
 % When you first define a new word, use this macro to make it stand out
@@ -356,14 +356,14 @@ If $G$ is $k-$critical and $S=\{u,v\}$ is a vx cut of $G$, then:
 
 
 %Critical Implies Bound on Degrees
-\begin{cor}(Critical Implies Bound on Degrees)
+\begin{cor} (Critical Implies Bound on Degrees)
 
 Let $G$ is $k-$critical and $S=\{u,v\}$ is a vx cut of $G$, then $d_G(u)+d_G(v)\geq 3k-5$.
 \end{cor}
 
 
 %1,2,3-Critical Graphs
-\begin{lem}($1,2,3-$Critical Graphs)
+\begin{lem} ($1,2,3-$Critical Graphs)
 
 Let $G$ is $k-$critical. Then:
 \begin{itemize}
@@ -439,7 +439,7 @@ If $G$ is a bipartite graph with a maximum matching $M^*$ and a minimum covering
 % Hamilton Cycle and \# Components with Vertex Cut
 \begin{thm} (Hamilton Cycle and \# Components with Vertex Cut)
 
-Let $G$ be a Hamilton graph. Then $\forall S\subset V,$ $S\neq \emptyset,$ $c(G-S)\leq |S|$.
+Let $G$ be a Hamilton graph. Then $\forall S\subset V$, $S\neq \emptyset$, $c(G-S)\leq |S|$.
 \end{thm}
 
 % [BONDY-CHVATAL] Conditions for when $G$ Hamiltonian $\Longleftrightarrow$ $G+uv$ Hamiltonian
@@ -473,7 +473,7 @@ Let $G$ be a simple graph with $n\geq 3$ and $cl(G)\cong K_n$. Then $G$ is Hamil
 \begin{thm} (CHVATAL) (Stupid Conditions $\implies$ Hamiltonian)
 
 Let $G$ be a simple graph of order $n \geq 3$ with degree sequence $(d_1,d_2,\ldots,d_n)$, where
-$d_1 \leq d_2 \leq \ldots \leq d_n$. Suppose that there is no value of $k$ less than $n/2$ for which
+$d_1 \leq d_2 \leq \cdots \leq d_n$. Suppose that there is no value of $k$ less than $n/2$ for which
 $d_k \leq k$ and $d_{n-k} \leq n-k$. Then $G$ is Hamiltonian.
 \end{thm}
 

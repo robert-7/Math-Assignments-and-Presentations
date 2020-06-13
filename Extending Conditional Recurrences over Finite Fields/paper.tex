@@ -26,10 +26,26 @@
 
 \section{Introduction}
 
-Recurrences relations act as a powerful tool for simplifying many real world and mathematical problems. They also come up naturally in finding bounds for the average or worst case scenario for algorithms in the field of computer science. A key algorithm for deciding whether an element $k$ is in some sorted list $L$ with $n$ elements is the Binary Search method. This method looks at an element found at index $\lfloor\frac{n}{2}\rfloor$ in $L$. If $L[i]<k$ we repeat the algorithm on the former half of the list; otherwise, we repeat the algorithm on the later half of the list. If the comparison of the terms took one unit of time, then we can say the worst case scenario for the Binary Search method takes $T(n)=T\left(\left\lfloor\frac{n}{2}\right\rfloor\right)+1$ where $T(1)=1$.
-On a separate note, historically speaking, they seem to simply garner a mathematical curiosity. The Fibonacci recursion is one of the oldest recurrence relations to date. This is because its simple pattern, yet complex proof for a solution, demonstrates its importance to their study. 
+Recurrences relations act as a powerful tool for simplifying many real world and mathematical problems.
+They also come up naturally in finding bounds for the average or worst case scenario for algorithms in
+the field of computer science. A key algorithm for deciding whether an element $k$ is in some sorted
+list $L$ with $n$ elements is the Binary Search method. This method looks at an element found at index
+$\lfloor\frac{n}{2}\rfloor$ in $L$. If $L[i]<k$ we repeat the algorithm on the former half of the list;
+otherwise, we repeat the algorithm on the later half of the list. If the comparison of the terms took
+one unit of time, then we can say the worst case scenario for the Binary Search method takes
+$T(n)=T\left(\left\lfloor\frac{n}{2}\right\rfloor\right)+1$ where $T(1)=1$. On a separate note,
+historically speaking, they seem to simply garner a mathematical curiosity. The Fibonacci recursion is
+one of the oldest recurrence relations to date. This is because its simple pattern, yet complex proof
+for a solution, demonstrates its importance to their study. 
 
-However, the above mentioned examples are examples of "unconditional recurrence relations". That is, the $n^{th}$ term of any sequence depends on one set of previous terms. However, we are also interested in recurrences whose dependency is conditional on the residue of $n$ mod $r$, where $r\in \mathbb{N}, r>1$. For example, sequence [A068911], found on Sloane's \textit{On-Line Encyclopedia of Integer Sequences}, describes "the number of $n$-step walks (each step $\pm$ 1 starting from 0) which are never more than 2 or less than -2"\cite{bib:gen_cond_rec}. The reader can convince themselves that if $q_n$ describes this relationship, then:
+However, the above mentioned examples are examples of "unconditional recurrence relations". That is,
+the $n^{th}$ term of any sequence depends on one set of previous terms. However, we are also
+interested in recurrences whose dependency is conditional on the residue of $n$ mod $r$, where $r\in
+\mathbb{N}, r>1$. For example, sequence [A068911], found on Sloane's \textit{On-Line Encyclopedia of
+Integer Sequences}, describes "the number of $n$-step walks (each step $\pm$ 1 starting from 0) which
+are never more than 2 or less than -2"\cite{bib:gen_cond_rec}. The reader can convince themselves that
+if $q_n$ describes this relationship, then:
+
 \begin{align*}
 q_n=
 \begin{cases}
@@ -37,7 +53,11 @@ q_n=
 1q_{n-1}+1q_{n-2} & \equiv 1 \mod 2 \\
 \end{cases}
 \end{align*}
-where $q_0=1$ (as there is only one $0$-step walk) and $q_1=2$ (as there are only two $1$-step walks -- a step forward, and a step backward). Moreover, it's also interesting to note that our previous interpretation of $T(n)$ is also conditional on the parity of $n$. It can be defined piece-wise as:
+
+where $q_0=1$ (as there is only one $0$-step walk) and $q_1=2$ (as there are only two $1$-step walks --
+a step forward, and a step backward). Moreover, it's also interesting to note that our previous
+interpretation of $T(n)$ is also conditional on the parity of $n$. It can be defined piece-wise as:
+
 \begin{align*}
 T(n)=
 \begin{cases}
@@ -45,16 +65,31 @@ T\left(\frac{n  }{2}\right) & \equiv 0 \mod 2 \\
 T\left(\frac{n-1}{2}\right) & \equiv 1 \mod 2 \\
 \end{cases}
 \end{align*}
-Lastly, we're interested in understanding how to extend these recurrence relations to finite fields. One application of this occurs in Linear-Feedback-Shift-Registers. [They] are an efficient way of describing and generating certain sequences in hardware implementations \cite{bib:lfsr} and are defined over various fields of the form $\mathbb{F}_{2}$.  
 
-For the purpose of this paper, we'll be focusing on conditional and unconditional linear recurrences. We'll be explaining their general structure over various fields -- focusing on finite fields and approaches to finding their solutions. If their solutions cannot be found using those techniques, we'll at least note some observations about their structures.
+Lastly, we're interested in understanding how to extend these recurrence relations to finite fields. One
+application of this occurs in Linear-Feedback-Shift-Registers. [They] are an efficient way of describing
+and generating certain sequences in hardware implementations \cite{bib:lfsr} and are defined over
+various fields of the form $\mathbb{F}_{2}$.  
+
+For the purpose of this paper, we'll be focusing on conditional and unconditional linear recurrences.
+We'll be explaining their general structure over various fields -- focusing on finite fields and
+approaches to finding their solutions. If their solutions cannot be found using those techniques, we'll
+at least note some observations about their structures.
 
 \section{Solving linear recurrences over any Field}
 
 \subsection{Explanation}
-Let's go back to the Fibonacci recursion $f_n=f_{n-1}+f_{n-2}$ where $f_0=0$ and $f_1=1$. Then the output for the sequence can be seen in Table \ref{tab:fib-output}. Moreover, if we let $f(n)= \frac{\phi^n-\overline{\phi}^n}{\sqrt{5}}, \phi=\frac{1+\sqrt{5}}{2}, \overline{\phi}=\frac{1-\sqrt{5}}{2}$, then we can make the observation that $f_n=f(n)$. We say that $f(n)$ is the closed-form solution to the linear recurrence relation $f_n$. 
+Let's go back to the Fibonacci recursion $f_n=f_{n-1}+f_{n-2}$ where $f_0=0$ and $f_1=1$. Then the
+output for the sequence can be seen in Table \ref{tab:fib-output}. Moreover, if we let
+$f(n)=\frac{\phi^n-\overline{\phi}^n}{\sqrt{5}}, \phi=\frac{1+\sqrt{5}}{2}, \overline{\phi}=\frac{1-\sqrt{5}}{2}$,
+then we can make the observation that $f_n=f(n)$. We say that $f(n)$ is the closed-form solution to the
+linear recurrence relation $f_n$. 
 
-Similarly, we can define the Fibonacci recursion over a different field. Suppose we're interested in the sequence output over the field $\mathbb{F}_5$. Then let $g_n \equiv f_n \pmod 5$ and $g(n)=2n3^n$. Then the outputs for the sequence and function can be seen in Table \ref{tab:fib-output} and we see that $g(n) \equiv f(n) \pmod 5$.
+Similarly, we can define the Fibonacci recursion over a different field. Suppose we're interested in the
+sequence output over the field $\mathbb{F}_5$. Then let $g_n \equiv f_n \pmod 5$ and $g(n)=2n3^n$. Then
+the outputs for the sequence and function can be seen in Table \ref{tab:fib-output} and we see that
+$g(n) \equiv f(n) \pmod 5$.
+
 \begin{table}[ht]
 \centering
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
@@ -69,18 +104,34 @@ $g(n)$ over $\mathbb{F}_5$ & 0 & 1 & 1 & 2 & 3 & 0 & 3 & 3 & 1 & 4 & 0 & 4 & 4 &
 \label{tab:fib-output}
 \end{table}
 
-We're interested in deriving the connection between the $f_n$ and $f(n)$. The author notes that this process is heavily derived from Conrad \cite{bib:solve-lin-rec-field}. To do so, we'll first generalize our problem. Suppose our linear recurrence relation is of the form:
+We're interested in deriving the connection between the $f_n$ and $f(n)$. The author notes that this
+process is heavily derived from Conrad \cite{bib:solve-lin-rec-field}. To do so, we'll first generalize
+our problem. Suppose our linear recurrence relation is of the form:
+
 \begin{equation}
 a_n=c_1a_{n-1}+c_2a_{n-2}+\ldots+c_da_{n-d}, a_i, c_i \in \mathbb{F}
 \label{eq:general-linear-recursion}
 \end{equation}
 
-where $\mathbb{F}$ is some field and $a_0, a_1, \ldots, a_{d-1} \in \mathbb{F}$ are also given. Then we're looking for a basis of solutions in a $d$-dimensional vector space over $\mathbb{F}$. It's known that a solution to the sequence is an exponential of the form $\lambda^n$\cite{bib:solve-lin-rec-field}. Therefore, we're looking to solve the equation $\lambda^n=c_1\lambda^{n-1}+c_2\lambda^{n-2}+\ldots+c_d\lambda^{n-d}$. Since $0$ would not contribute to a basis of solutions, we factor about a $\lambda^{n-d}$ from the equation and we're left with solving:
+where $\mathbb{F}$ is some field and $a_0, a_1, \ldots, a_{d-1} \in \mathbb{F}$ are also given. Then
+we're looking for a basis of solutions in a $d$-dimensional vector space over $\mathbb{F}$. It's known
+that a solution to the sequence is an exponential of the form $\lambda^n$\cite{bib:solve-lin-rec-field}.
+Therefore, we're looking to solve the equation
+$\lambda^n=c_1\lambda^{n-1}+c_2\lambda^{n-2}+\ldots+c_d\lambda^{n-d}$. Since $0$ would not contribute to
+a basis of solutions, we factor about a $\lambda^{n-d}$ from the equation and we're left with solving:
+
 \begin{equation}
 \lambda^d-c_1\lambda^{d-1}-c_2\lambda^{d-2}-\ldots-c_d=0
 \label{eq:char-poly}
 \end{equation}
-The reader can note that a similar method can be used to derive the characteristic polynomial. An linear operator, denoted $E$, is used in some methods to solve linear relations (see \cite{bib:successor-explained} for more information). It's defined as such: let $t_n$ be a sequence defined by a linear recurrence relation with constant coefficients. Then this operator is defined by $Et_n=t_n+1$ and $E^jt_n=t_{n+j}$\cite{bib:gen_cond_rec}. If we rewrite Equation \ref{eq:general-linear-recursion}, then we'll see that:
+
+The reader can note that a similar method can be used to derive the characteristic polynomial. An linear
+operator, denoted $E$, is used in some methods to solve linear relations (see
+\cite{bib:successor-explained} for more information). It's defined as such: let $t_n$ be a sequence
+defined by a linear recurrence relation with constant coefficients. Then this operator is defined by
+$Et_n=t_n+1$ and $E^jt_n=t_{n+j}$\cite{bib:gen_cond_rec}. If we rewrite Equation
+\ref{eq:general-linear-recursion}, then we'll see that:
+
 \begin{align*}
 0
 &= a_n-c_1a_{n-1}-c_2a_{n-2}-\ldots-c_da_{n-d} \\
@@ -106,21 +157,27 @@ f_n=\sum_{i=1}^r\sum_{j=0}^{m_i-1} C_{i,j}\binom{n}{j}\lambda_j
 
 \subsection{Examples and Applications}
 
-Below are some examples demonstrating the theorems mentioned earlier. Interesting facts are also observed regarding the sequences over various finite fields. Examples \ref{ex:fib-sol-R} \ref{ex:fib-sol-F_5} showcase nice applications of theory mentioned earlier.
+Below are some examples demonstrating the theorems mentioned earlier. Interesting facts are also
+observed regarding the sequences over various finite fields. Examples \ref{ex:fib-sol-R} and
+\ref{ex:fib-sol-F_5} showcase nice applications of theory mentioned earlier.
 \\
+
 \begin{example}
 If we're being to asked to solve $f(n)$, then we'll be asked to find the solutions over a 2-dimensional space in $\mathbb{R}$ satisfying $\lambda^2-\lambda-1=0$. We see that that solutions are $\phi=\frac{1+\sqrt{5}}{2}, \overline{\phi}=\frac{1-\sqrt{5}}{2}$. Therefore, we can conclude that $f(n)= C_1\phi^n-C_1\overline{\phi}^n$ where $\phi=\frac{1+\sqrt{5}}{2}$ and $\overline{\phi}=\frac{1-\sqrt{5}}{2}$. Solving for the initial conditions get us that $C_1=\frac{1}{\sqrt{5}}$ and $C_2=-\frac{1}{\sqrt{5}}$.
 \label{ex:fib-sol-R}
 \end{example}
 
-However, the math turns out quite different under different fields as we see in Example \ref{ex:fib-sol-F_5}.
+However, the math turns out quite different under different fields as we see in Example
+\ref{ex:fib-sol-F_5}.
 \\
+
 \begin{example}
 If we're being to asked to solve $g(n)$, then we'll be asked to find the solutions over a 2-dimensional space in $\mathbb{F}_5$ satisfying $\lambda^2-\lambda-1=0$ which is equivalent to $\lambda^2+4\lambda+4=(\lambda+2)^2=(\lambda-3)^2=0$. Therefore, $3$ is a solution with multiplicity 2. Therefore, we use Equation \ref{eq:closed-form-repeated-roots} to conclude that $f(n)= C_1 3^n-C_2n 3^n$. Solving for the same initial conditions as we have for $f(n)$, we get that $C_1=0$ and $C_2=2$. Therefore, $g(n)=2n3^n$.
 \label{ex:fib-sol-F_5}
 \end{example}
 
-The reader can find some sequence outputs in Table \ref{tab:fib-out} and in Figures \ref{fig:fib_F2} \ref{fig:fib_F3} \ref{fig:fib_F5} \ref{fig:fib_F7} below.
+The reader can find some sequence outputs in Table \ref{tab:fib-out} and in Figures \ref{fig:fib_F2}
+\ref{fig:fib_F3} \ref{fig:fib_F5} \ref{fig:fib_F7} below.
 
 \begin{table}[!ht]
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
@@ -160,12 +217,17 @@ Field=7: & 0 & 1 & 1 & 2 & 3 & 5 & 1 & 6 & 0 & 6 & 6  & 5  & 4  & 2  & 6  & 1  &
   \label{fig:fib_F7}
 \end{figure}
 
-If the reader turns their attention to Figures \ref{fig:fib_F2} and \ref{fig:fib_F5}, they'll notice the pattern that appears every 3 and 20 terms, respectively. These pattern are not a coincidence and are proven in the next example.
+If the reader turns their attention to Figures \ref{fig:fib_F2} and \ref{fig:fib_F5}, they'll notice the
+pattern that appears every 3 and 20 terms, respectively. These pattern are not a coincidence and are
+proven in the next example.
 \\
+
 \begin{example}
 Looking at $f_n=f_{n-1}+f_{n-2}$ over $\mathbb{F}_2$, we'll see that $f_{n+3}=f_{n+2}+f_{n+1}=(f_{n+1}+f_{n})+f_{n+1}=f_{n}$.
 
-Recall that $g(n)=2n3^n$ is the closed form solution for the Fibonacci sequence over $\mathbb{F}_5$. Then computing $g(n+20)$ we get:
+Recall that $g(n)=2n3^n$ is the closed form solution for the Fibonacci sequence over $\mathbb{F}_5$.
+Then computing $g(n+20)$ we get:
+
 \begin{align*}
 g(n+20)
 &=2(n+20)3^{n+20} \\
@@ -178,26 +240,45 @@ However, the ord($3$)=4, so $3^{4^{5}}=1$, and so this simplifies to $2n3^n$.
 \label{ex:period_fib_F5}
 \end{example}
 
-The author notes that these were ad-hoc approaches to verifying the period. However, the reader can note that having a closed-form solution was helpful in verifying a solution. Though we find out in the next subsection that a closed-form solution cannot always be found.
+The author notes that these were ad-hoc approaches to verifying the period. However, the reader can note
+that having a closed-form solution was helpful in verifying a solution. Though we find out in the next
+subsection that a closed-form solution cannot always be found.
 
 \subsection{Irreducibility of the Characteristic Polynomial}
 
-The characteristic polynomial for the Fibonacci sequence was able to be factored over $\mathbb{F}_5$. However, this need not always be the case. A simple explanation is that a problem arises when your roots to the characteristic equation are not in your field. We see this happens in Example \ref{ex:cubic-irred}.
+The characteristic polynomial for the Fibonacci sequence was able to be factored over $\mathbb{F}_5$.
+However, this need not always be the case. A simple explanation is that a problem arises when your roots
+to the characteristic equation are not in your field. We see this happens in Example
+\ref{ex:cubic-irred}.
 \\
+
 \begin{example}
 If we're being to asked to solve $h(n)=h(n-3)$ over $\mathbb{F}_5$ where $h(0)=0$, $h(1)=1$, and $h(2)=2$, then we'll be asked to find the solutions over a 3-dimensional space in $\mathbb{F}_5$ satisfying $\lambda^{3}-1=(\lambda-1)(\lambda^2+\lambda+1)=0$. But under the $\mathbb{F}_5$, the $h_1(x)=x^2+x+1$ is irreducible since it has $deg(h)=2$ and $h(x)\ne 0, \forall x\in \mathbb{F}_5$. 
 \label{ex:cubic-irred}
 \end{example}
 
-Moreover, it can be calculated that $x^2-x-1$ is irreducible over $\mathbb{F}_2$, $\mathbb{F}_3$, $\mathbb{F}_7$ as well. To the best of the author's knowledge, little is known between the connection between the irreducible factors of a characteristic polynomial and the solutions to the basis. Having knowledge that these polynomials must factor in some field extension seems helpful. However, interpreting these problems in such a way is outside the scope of this paper.
+Moreover, it can be calculated that $x^2-x-1$ is irreducible over $\mathbb{F}_2$, $\mathbb{F}_3$,
+$\mathbb{F}_7$ as well. To the best of the author's knowledge, little is known between the connection
+between the irreducible factors of a characteristic polynomial and the solutions to the basis. Having
+knowledge that these polynomials must factor in some field extension seems helpful. However,
+interpreting these problems in such a way is outside the scope of this paper.
 
-In conclusion, it's clear that there is much more to learn about defining recursions over a finite field. Understanding their patterns is important, as well. However, understanding how irreducibility plays a role in this scenario should be a priority to understanding this problems.
+In conclusion, it's clear that there is much more to learn about defining recursions over a finite
+field. Understanding their patterns is important, as well. However, understanding how irreducibility
+plays a role in this scenario should be a priority to understanding this problems.
 
 \section{Solving a Conditional Linear Recurrence}
 
-Up until now, the topic has been about finding a closed-form solution for a linear recurrence relation. However a method exists for solving conditional recurrences -- though it's a little more complex. The author would like to note that this process is taken directly from \cite{bib:gen_cond_rec} as it conveniently explains the process in perfect detail. The reader can note that this process can be extended to any field as the operations are not necessarily limited to $\mathbb{R}$ or $\mathbb{C}$.
+Up until now, the topic has been about finding a closed-form solution for a linear recurrence relation.
+However a method exists for solving conditional recurrences -- though it's a little more complex. The
+author would like to note that this process is taken directly from \cite{bib:gen_cond_rec} as it
+conveniently explains the process in perfect detail. The reader can note that this process can be
+extended to any field as the operations are not necessarily limited to $\mathbb{R}$ or $\mathbb{C}$.
 
-We start by defining a general conditional recurrence relation. Let $\{a_{i,j}\}$ be real numbers for $0 \le i \le r-1$ and $1 \le j \le s$, and define a sequence ${q_n}$ with given terms $q_i$, $0 \le i \le s-1$, an for $n \ge s$
+We start by defining a general conditional recurrence relation. Let $\{a_{i,j}\}$ be real numbers for
+$0 \le i \le r-1$ and $1 \le j \le s$, and define a sequence ${q_n}$ with given terms $q_i$,
+$0 \le i \le s-1$, and for $n \ge s$:
+
 \begin{align*}
 q_n=
 \begin{cases}
@@ -207,7 +288,10 @@ a_{1,1}q_{n-1}+a_{1,2}q_{n-2}+\ldots+a_{1,s}q_{n-s}       & \equiv 1   \mod r \\
 a_{r-1,1}q_{n-1}+a_{r-1,2}q_{n-2}+\ldots+a_{r-1,s}q_{n-s} & \equiv r-1 \mod r \\
 \end{cases}
 \end{align*}
-We call such a sequence a \textit{general conditional recurrence sequence} with \textit{associated coefficient matrix}.
+
+We call such a sequence a \textit{general conditional recurrence sequence} with \textit{associated
+coefficient matrix}.
+
 \begin{align*}
 A=
 \begin{bmatrix}
@@ -217,7 +301,13 @@ A=
     a_{r-1,1} & a_{r-1,2} & \dots  & a_{r-1,n}
 \end{bmatrix}
 \end{align*}
-We note that sequence [A068911] is an example of general conditional recurrence sequence where $r=s=2$ and $(a_{0,1},a_{0,2},a_{1,1},a_{1,2})=(2,0,1,1)$. For the sake of this simply understanding the material, we'll explain the process for when we're given ${a_{i,j}}$ $r \le 3$ and $s \le 3$. Therefore, we're interested in solving the sequence $q_n$ with initial values $q_0$, $q_1$, $q_2$ for when $n \ge 3$ by:
+
+We note that sequence [A068911] is an example of general conditional recurrence sequence where $r=s=2$
+and $(a_{0,1},a_{0,2},a_{1,1},a_{1,2})=(2,0,1,1)$. For the sake of this simply understanding the
+material, we'll explain the process for when we're given ${a_{i,j}}$ $r \le 3$ and $s \le 3$. Therefore,
+we're interested in solving the sequence $q_n$ with initial values $q_0$, $q_1$, $q_2$ for when
+$n \ge 3$ by:
+
 \begin{align*}
 q_n=
 \begin{cases}
@@ -226,7 +316,11 @@ a_{1,1}q_{n-1}+a_{1,2}q_{n-2}+a_{1,3}q_{n-3} & \equiv 1 \mod 3 \\
 a_{2,1}q_{n-1}+a_{2,2}q_{n-2}+a_{2,3}q_{n-3} & \equiv 2 \mod 3 \\
 \end{cases}
 \end{align*}
-Our goal is to the sequence as different subsequences that are related by the successor operator, and then to solve a homogeneous system. To do this, we bring $q_n$ to the other side of the equation, we can rewrite this as:
+
+Our goal is to the sequence as different subsequences that are related by the successor operator, and
+then to solve a homogeneous system. To do this, we bring $q_n$ to the other side of the equation, we can
+rewrite this as:
+
 \begin{align*}
 0=
 \begin{cases}
@@ -263,7 +357,11 @@ Therefore, we now have 3 subsequences given by:
 \left\{Q_n^{(2)}\right\}_{n=0}^{\infty}
 =\left\{q_{3n+2}\right\}_{n=0}^{\infty}
 \end{align*}
-which are called the $3$ decimation sequences of $\{q_nr+t\}$. At this point, we apply the successor operator for the sequence $\{Q_n^{(t)}\}_{n=0}^{\infty}$ since $E^{\mu}Q_{n}^{(t)}=Q_{n+\mu}^{(t)}$ for any $0 \le \mu \le k$, $0 \le t \le r-1$, we rewrite equation as:
+
+which are called the $3$ decimation sequences of $\{q_nr+t\}$. At this point, we apply the successor
+operator for the sequence $\{Q_n^{(t)}\}_{n=0}^{\infty}$ since $E^{\mu}Q_{n}^{(t)}=Q_{n+\mu}^{(t)}$ for
+any $0 \le \mu \le k$, $0 \le t \le r-1$, we rewrite equation as:
+
 \begin{align*}
 -a_{0,0}EQ_{n}^{(0)}+a_{0,1}Q_{n}^{(2)}
 +a_{0,2}Q_{n}^{(1)}+a_{0,3}Q_{n}^{(0)} = 0 \\
@@ -272,7 +370,9 @@ which are called the $3$ decimation sequences of $\{q_nr+t\}$. At this point, we
 -a_{2,0}EQ_{n}^{(2)}+a_{2,1}EQ_{n}^{(1)}
 +a_{2,2}EQ_{n}^{(0)}+a_{2,3}Q_{n}^{(2)} = 0
 \end{align*}
+
 However, this can be written as a homogeneous system:
+
 \begin{align*}
 \begin{bmatrix}
     a_{0,3}-a_{0,0}E & a_{0,2}          & a_{0,1}          \\
@@ -301,12 +401,18 @@ $
 \end{bmatrix}
 =0
 $
+
 At this point, we use a Theorem 2 from \cite{bib:gen_cond_rec}. We'll declare it below.
+\\
+
 \begin{theorem}
-If $D=D(E)=detP$, then $\{q_n\}$  satisfies the recurrence relation whose characteristic polynomial is $D(\lambda^r)$
+If $D=D(E)=detP$, then $\{q_n\}$  satisfies the recurrence relation whose characteristic polynomial is
+$D(\lambda^r)$
 \label{thm:det-is-char-poly-dxr}
 \end{theorem}
+
 Therefore:
+
 \begin{align*}
 D
 &=detP \\
@@ -315,7 +421,10 @@ D
 &+ (a_{0,3}a_{1,2}a_{2,1}+a_{0,1}a_{1,3}a_{2,2}+a_{0,2}a_{1,1}a_{2,3}+a_{1,3}a_{2,3}+a_{0,3}a_{2,3}+a_{0,3}a_{1,3}-a_{0,2}a_{1,2}a_{2,2})E \\
 &-(a_{0,3}a_{1,2}a_{2,1})
 \end{align*}
-Since $r=3$, by Theorem \ref{thm:det-is-char-poly-dxr}, we get that when the determinant equals zero, substituting $\lambda^3$ in for $E$ gives us the characteristic polynomial:
+
+Since $r=3$, by Theorem \ref{thm:det-is-char-poly-dxr}, we get that when the determinant equals zero,
+substituting $\lambda^3$ in for $E$ gives us the characteristic polynomial:
+
 \begin{align*}
 \lambda^9
 &= (a_{0,1}a_{1,1}a_{2,1}+a_{0,1}a_{2,2}+a_{0,2}a_{1,1}+a_{1,2}a_{2,1}+a_{0,3}+a_{1,3}+a_{2,3})\lambda^6 \\
@@ -326,6 +435,7 @@ Since $r=3$, by Theorem \ref{thm:det-is-char-poly-dxr}, we get that when the det
 \subsection{Examples and Observations}
 
 \begin{example}
+
 Suppose $q_n$ is defined like so:
 \begin{align*}
 q_n=
@@ -348,10 +458,14 @@ Calculating the determinant, we find that:
 \begin{align*}
 D=(-E)(E^2-7E+1)
 \end{align*}
-Substituting $E=\lambda^3$ implies we need to solve $p(\lambda)=\lambda^6-7\lambda^3+1$ -- a degree 6 polynomial whose solutions are our basis for the 6-dimensional vector space that satisfies both $\{q_n\}$ and ${p_n}$ where $p_n=7p_{n-3}-p_{n-6}$.
+Substituting $E=\lambda^3$ implies we need to solve $p(\lambda)=\lambda^6-7\lambda^3+1$ -- a degree 6
+polynomial whose solutions are our basis for the 6-dimensional vector space that satisfies both
+$\{q_n\}$ and ${p_n}$ where $p_n=7p_{n-3}-p_{n-6}$.
 \end{example}
 
-The next example showcases the characteristic polynomial can be factored over finite field $\mathbb{F}_2$ and $\mathbb{F}_4$, but no other tested field. However, a precaution needs to be taken since the initial conditions need to be altered to satisfy the newly obtained linear recursion. 
+The next example showcases the characteristic polynomial can be factored over finite field
+$\mathbb{F}_2$ and $\mathbb{F}_4$, but no other tested field. However, a precaution needs to be taken
+since the initial conditions need to be altered to satisfy the newly obtained linear recursion. 
 \\
 \begin{example}
 Suppose $q_n$ is defined like so:
@@ -374,9 +488,15 @@ Calculating the determinant, we find that:
 \begin{align*}
 D=(-E)(-E+1)-(E)(2)=\ldots=E(E-3)
 \end{align*}
-Substituting $E=\lambda^2$ implies we need to solve $p(\lambda)=\lambda^2-3$ -- a degree 2 polynomial whose solutions are our basis for the 2-dimensional vector space that satisfies both $\{q_n\}$ and ${p_n}$ where $p_n=3p_{n-2}$. In this case the closed form solution is $q_n=\left(\frac{2+\sqrt{3}}{3}\right)(\sqrt{3})^n+\frac{2+\sqrt{3}}{3}(-\sqrt{3})^n$. However, for this to hold, the $q_0$ must be set to $q_0=\frac{4}{3}$ since $q_2={4}=3q_0$. 
+Substituting $E=\lambda^2$ implies we need to solve $p(\lambda)=\lambda^2-3$ -- a degree 2 polynomial
+whose solutions are our basis for the 2-dimensional vector space that satisfies both $\{q_n\}$ and
+${p_n}$ where $p_n=3p_{n-2}$. In this case the closed form solution is
+$q_n=\left(\frac{2+\sqrt{3}}{3}\right)(\sqrt{3})^n+\frac{2+\sqrt{3}}{3}(-\sqrt{3})^n$. However, for this
+to hold, the $q_0$ must be set to $q_0=\frac{4}{3}$ since $q_2={4}=3q_0$. 
 
-Similarly, the reader can note that if factoring $\lambda^2-3$ over $\mathbb{F}_2$ and $\mathbb{F}_4$ is possible. Similarly, since the the sequence outputs all zeros, and so the initial conditions needed to be modified as well. 
+Similarly, the reader can note that if factoring $\lambda^2-3$ over $\mathbb{F}_2$ and $\mathbb{F}_4$ is
+possible. Similarly, since the the sequence outputs all zeros, and so the initial conditions needed to
+be modified as well. 
 
 It's output can be seen in the table below.
 
@@ -405,7 +525,9 @@ However, over other tested fields, no closed form solution can be found since $\
 
 \section{Conclusion}
 
-Therefore, it can be concluded that there there are many applications of finite fields to the study of linear recurrences. From the study of periods to the more important study of irreducibles in characteristic polynomials, for conditional or unconditional recurrences, these will play a role in understanding recurrences altogether. 
+Therefore, it can be concluded that there there are many applications of finite fields to the study of linear
+recurrences. From the study of periods to the more important study of irreducibles in characteristic polynomials, for
+conditional or unconditional recurrences, these will play a role in understanding recurrences altogether. 
 
 \begin{thebibliography}{9}
 

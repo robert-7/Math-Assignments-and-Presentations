@@ -25,12 +25,12 @@ matrix:
     - name: Latex Linting
       stage: lint
       install:
-        - sudo apt-get install texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended 
+        - sudo apt-get install texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
         - sudo apt-get install chktex
       script:
-        - chktex -W # Print version information.
+        - chktex -W  # Print version information.
         # We ignore 4 warnings described below:
-        # Warning 3:  You should enclose the previous parenthesis with ‘{}’. 
+        # Warning 3:  You should enclose the previous parenthesis with ‘{}’.
         #             Reason: https://tex.stackexchange.com/questions/529937/why-should-i-enclose-the-previous-parenthesis-with
         # Warning 6:  No italic correction (‘\/’) found.
         #             Reason: https://tex.stackexchange.com/questions/469942/chktex-complains-about-no-italic-correction-found-how-to-fix-this

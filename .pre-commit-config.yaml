@@ -4,14 +4,14 @@ repos:
     rev: v4.4.0
     hooks:
       - id: trailing-whitespace
-        # TODO: exclude our latex files for now until we have properly automated builds and deploys
+        # TODO: exclude our latex files for now until we have properly automated builds and deploys [#13]
         exclude: >-
           (?x)^(
               .*\.sty$|
               .*\.tex$
           )$
       - id: end-of-file-fixer
-        # TODO: exclude our latex files for now until we have properly automated builds and deploys
+        # TODO: exclude our latex files for now until we have properly automated builds and deploys [#13]
         exclude: >-
           (?x)^(
               .*\.sty$|
@@ -35,8 +35,8 @@ repos:
     rev: v2.17.5
     hooks:
       - id: pylint
-        args: ["--ignore=tests/"]  # Optional: any arguments you want to provide to pylint
-        # TODO: clean up the file below
+        args: ["--ignore=tests/"]
+        # TODO: clean up the file below [#14]
         exclude: 'Solving Linear Relations using Linear Algebra/test_results.py'
   - repo: local
     hooks:

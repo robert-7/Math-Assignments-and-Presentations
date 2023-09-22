@@ -10,6 +10,13 @@ repos:
               .*\.sty$|
               .*\.tex$
           )$
+      - id: end-of-file-fixer
+        # TODO: exclude our latex files for now until we have properly automated builds and deploys
+        exclude: >-
+          (?x)^(
+              .*\.sty$|
+              .*\.tex$
+          )$
       - id: check-yaml
   - repo: https://github.com/markdownlint/markdownlint
     rev: v0.12.0

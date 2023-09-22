@@ -1,6 +1,6 @@
 # Math Assignments and Presentations
 
-[![Build Status](https://travis-ci.com/robert-7/math-assignments-and-presentations.svg?branch=master)](https://travis-ci.com/robert-7/math-assignments-and-presentations)
+![GitHub Workflow Status](https://github.com/robert-7/Math-Assignments-and-Presentations/actions/workflows/main.yml/badge.svg)
 
 Various papers and presentations done in LaTeX. Links to compiled PDFs can be found in the READMEs.
 

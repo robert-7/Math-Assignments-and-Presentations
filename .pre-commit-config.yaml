@@ -1,0 +1,49 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+        # TODO: exclude our latex files for now until we have properly automated builds and deploys [#13]
+        exclude: >-
+          (?x)^(
+              .*\.sty$|
+              .*\.tex$
+          )$
+      - id: end-of-file-fixer
+        # TODO: exclude our latex files for now until we have properly automated builds and deploys [#13]
+        exclude: >-
+          (?x)^(
+              .*\.sty$|
+              .*\.tex$
+          )$
+      - id: check-yaml
+  - repo: https://github.com/markdownlint/markdownlint
+    rev: v0.12.0
+    hooks:
+      - id: markdownlint
+        args: ['--style', '.markdownlint.rb']
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.32.0
+    hooks:
+      - id: yamllint
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+  - repo: https://github.com/pylint-dev/pylint
+    rev: v2.17.5
+    hooks:
+      - id: pylint
+        args: ["--ignore=tests/"]
+        # TODO: clean up the file below [#14]
+        exclude: 'Solving Linear Relations using Linear Algebra/test_results.py'
+  - repo: local
+    hooks:
+      - id: chktex
+        name: chktex
+        description: This hook runs chktex for LaTeX linting.
+        entry: chktex
+        args: ['-l', '.chktexrc']
+        language: system
+        files: .*/.*\.tex$

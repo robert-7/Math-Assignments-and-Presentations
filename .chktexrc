@@ -1,0 +1,27 @@
+CmdLine
+{
+    # Warning 2:  TODO: Look into this. [#16]
+    -n 2
+    # Warning 3:  You should enclose the previous parenthesis with ‘{}’.
+    #             This is largely ignored by the community as per the link below.
+    #             Reason: https://tex.stackexchange.com/questions/529937/why-should-i-enclose-the-previous-parenthesis-with
+    -n 3
+    # Warning 6:  No italic correction (‘\/’) found.
+    #             Reason: https://tex.stackexchange.com/questions/469942/chktex-complains-about-no-italic-correction-found-how-to-fix-this
+    #             TODO: Look into this. [#18]
+    -n 6
+    # Warning 8:  Wrong length of dash may have been used
+    #             Reason: https://tex.stackexchange.com/questions/350485/how-to-ignore-wrong-length-of-dash-may-have-been-used-inside-cite-and-newci/418010
+    #             TODO: Appending `% chktex 8` to the end of the offending line will ifgnore this check [#19]
+    #             TODO: Changing image names to use underscores instead of hyphens will fix the issue [#19]
+    -n 8
+    # Warning 24: Delete this space to maintain correct pagereferences
+    #             Reason: https://tex.stackexchange.com/questions/264109/when-is-leading-opening-whitespace-of-a-line-in-a-tex-file-important
+    #             It's being overly cautious about the tab/spaces before a \label instace. But this
+    #             shouldn't impact spacing, so we ignore them for now.
+    #             TODO: Actually, look into this when you get a chance [#20]
+    -n 24
+    # Warning 45: TODO: Look into this. [#21]
+    -n 45
+    -q
+}

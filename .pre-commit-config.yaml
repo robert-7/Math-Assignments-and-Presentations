@@ -27,3 +27,11 @@ repos:
     rev: v1.32.0
     hooks:
       - id: yamllint
+  - repo: local
+    hooks:
+      - id: chktex
+        name: chktex
+        entry: chktex
+        args: ['-l', '.chktexrc']
+        language: system
+        files: .*/.*\.tex$

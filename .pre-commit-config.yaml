@@ -38,6 +38,10 @@ repos:
         args: ["--ignore=tests/"]
         # TODO: clean up the file below [#14]
         exclude: 'Solving Linear Relations using Linear Algebra/test_results.py'
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 2.1.6
+    hooks:
+      - id: shellcheck
   - repo: local
     hooks:
       - id: chktex

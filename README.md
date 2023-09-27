@@ -21,5 +21,6 @@ All the hooks are also run automatically via CI when pushing, so installing them
 On Ubuntu, run this command:
 
 ```shell
-sudo apt-get update && sudo apt-get install -y chktex
+sudo apt update
+sudo apt install -y chktex shellcheck texlive-full
 ```

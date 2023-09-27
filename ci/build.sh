@@ -16,10 +16,8 @@ run_pdflatex() {
     local tex_path="${tex_directory}/${tex_file}"
     echo "Building ${tex_path}..."
     cd "${tex_directory}" || exit
-    # TODO: We don't handle errors correctly.
-    # pdflatex "${tex_file}" > /dev/null
-    if pdflatex "${tex_file}"; then
-        echo -e "$(tput setaf 2)Compilating ${tex_path} was successful!$(tput sgr0)"
+    if pdflatex -halt-on-error "${tex_file}"; then
+        echo -e "$(tput setaf 2)Compiling ${tex_path} was successful!$(tput sgr0)"
     else
         echo -e "$(tput setaf 1)There was an error compiling ${tex_path}.$(tput sgr0)"
     fi

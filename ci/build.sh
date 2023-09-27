@@ -21,6 +21,7 @@ run_pdflatex() {
     else
         echo -e "$(tput setaf 1)There was an error compiling ${tex_path}.$(tput sgr0)"
     fi
+    echo
     cd ..
 }
 

@@ -10,6 +10,7 @@
 \usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm]%
 {geometry}
 \usepackage{times}
+\usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{changepage}
 \usepackage{amssymb}
@@ -32,6 +33,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{exercise}[theorem]{Exercise}
+\newtheorem*{claim*}{Claim}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{problem}[theorem]{Problem}
@@ -39,7 +41,6 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{solution}[theorem]{Solution}
 \newtheorem{summary}[theorem]{Summary}
-\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
 
 % new commands for readability
 \newcommand{\C}{\mathbb{C}}
@@ -62,8 +63,11 @@
 
 \subsection*{Question 13}
 
-Show that $A*B$ is a free group if and only if $A$ and $B$ are free.\\
+\begin{claim*}
+Show that $A*B$ is a free group if and only if $A$ and $B$ are free.
+\end{claim*}
 
+\begin{proof}
 $(\Rightarrow)$ Assume $A*B$ is a free group. We'd like to show that $A$ and $B$ are free. Firstly, we
 note that $A$ and $B$ are definitely subgroups of $A*B$. This can be seen in Corollary 3.27 that states
 that groups $A$ and $B$ inject into $A*B$. Therefore, we can use Corollary 3.23 (Nielsen-Schreier) to say
@@ -82,6 +86,7 @@ freely reduce. That is, for all $i\in {1, 2, \ldots n}$, $b_{i-1} \neq a_i \neq 
 a_i^{-1} \neq b_i$ (as they were from different groups)
 
 Therefore, this word cannot freely reduce to $1_{A*B}$. Therefore, $A*B$ must be free.
+\end{proof}
 
 \subsection*{Question 14}
 
@@ -94,7 +99,7 @@ Let $\F_2$ be a free group with basis $\{x,y\}$, and let $K$
   \item Find the fundamental domain for the action of $K$ on the Cayley graph of $\F_2$.
 \end{enumerate}
 
-\textbf{Before we begin\ldots}
+\subsubsection*{Before we begin}
 
 We should note that since $\phi$ is a group homomorphism, we can determine the values of $\phi(x^3)$ and
 $\phi(x^{-1})$. We see that $\phi(x^3)=\phi(x*x*x)=\phi(x)+\phi(x)+\phi(x)=1+1+1=0$. On the other hand,
@@ -107,9 +112,9 @@ $0=\phi(1)=\phi(x*x^{-1})=\phi(x)+\phi(x^{-1})$. Therefore:
 &\implies \phi(x^{-1})=2
 \end{align*}
 
-Therefore, $\phi(x^3)=0$ and $\phi(x^{-1})=2$.  Similarly  $\phi(y^3)=0$ and $\phi(y^{-1})=2$.\\
+Therefore, $\phi(x^3)=0$ and $\phi(x^{-1})=2$.  Similarly  $\phi(y^3)=0$ and $\phi(y^{-1})=2$.
 
-\textbf{How does $K$ look}
+\subsubsection*{How does $K$ look}
 
 Firstly, suppose we have the set $K'$ such that:
 \begin{align*}
@@ -123,7 +128,7 @@ K'
 
 Therefore, as proven below, we can think of $K'$ as the words with exponents adding up to $0 \Mod{3}$.
 More formally, $K'=\{a_{1}^{\varepsilon_1}a_{2}^{\varepsilon_2}\ldots a_{n}^{\varepsilon_n} | a_i\in \F_2,
-\varepsilon_i\in \{-1, 1\}, \sum_{i=1}^{n} \varepsilon_i \equiv 0 \Mod{3}\}$. \\
+\varepsilon_i\in \{-1, 1\}, \sum_{i=1}^{n} \varepsilon_i \equiv 0 \Mod{3}\}$.
 
 \begin{claim}
 $K'=K$
@@ -214,8 +219,11 @@ $S=\left\{xy^{-1}, x^{-1}y, xxx, xyx\right\}$.
 
 \subsection*{Question 18}
 
-Let $A$ and $B$ be non-trivial groups. Prove that the centre of $A*B$ is trivial. \\
+\begin{claim*}
+Let $A$ and $B$ be non-trivial groups. Prove that the centre of $A*B$ is trivial.
+\end{claim*}
 
+\begin{proof}
 Let $A$ and $B$ be non-trivial groups. Denote the centre of $G$ as
 $Z(A*B)=\{ w \in A*B | wx=xw, \forall x \in A*B \}$. Clearly the identity is in $Z(A*B)$ since the
 identity must commute with every element in a group. However, to prove that no other elements in $A*B$ are
@@ -227,9 +235,10 @@ by finding a word, in every case, that cannot possibly commute with $w$.
 $a_1,a_2,\ldots ,a_n, b_1,b_2,\ldots b_n$ are not the identity and $n\geq 1$. Then let $x=a_1$ and look
 at the word $wxw^{-1}x^{-1}$. We see that:
 
-\begin{dmath}
-wxw^{-1}x^{-1}= (a_{1}b_{1}a_{2}b_{2}\ldots a_{n}b_{n}) (a_{1}) (b_{n}^{-1}a_{n}^{-1}\ldots b_{2}^{-1}a_{2}^{-1}b_{1}^{-1}a_{1}^{-1}) (a_{1}^{-1}) \neq{} 1
-\end{dmath}
+\begin{align*}
+  wxw^{-1}x^{-1} &= (a_{1}b_{1}a_{2}b_{2}\ldots a_{n}b_{n}) (a_{1}) (b_{n}^{-1}a_{n}^{-1}\ldots b_{2}^{-1}a_{2}^{-1}b_{1}^{-1}a_{1}^{-1}) (a_{1}^{-1}) \\
+  &\neq 1
+\end{align*}
 
 as it doesn't freely reduce.
 
@@ -244,9 +253,10 @@ $wxw^{-1}x^{-1}$. We see that $wxw^{-1}x^{-1}=aba^{-1}b^{-1}$ which does not red
 \textbf{Case 3.b}: 
 Suppose $w=a_{1}b_{1}a_{2}b_{2}\ldots a_{n}$, for $n\geq 2$ and where $a_1,a_2,\ldots ,a_n, b_1,b_2,\ldots b_{n-1}$ are not the identity. Then let $x=b_{n-1}$ and look at the word $wxw^{-1}x^{-1}$. We see that:
 
-\begin{dmath}
-wxw^{-1}x^{-1}= (a_{1}b_{1}a_{2}b_{2}\ldots a_{n}) (b_{n-1}) (a_{n}^{-1}\ldots b_{2}^{-1}a_{2}^{-1}b_{1}^{-1}a_{1}^{-1}) (b_{n-1}^{-1}) \neq{} 1
-\end{dmath}
+\begin{align*}
+  wxw^{-1}x^{-1} &= (a_{1}b_{1}a_{2}b_{2}\ldots a_{n}) (b_{n-1}) (a_{n}^{-1}\ldots b_{2}^{-1}a_{2}^{-1}b_{1}^{-1}a_{1}^{-1}) (b_{n-1}^{-1}) \\
+  &\neq 1
+\end{align*}
 
 as it doesn't freely reduce.
 
@@ -260,6 +270,7 @@ $a_1,a_2,\ldots ,a_{n-1}, b_1,b_2,\ldots b_n$ are not the identity. Then let $x=
 
 Since these 4 cases represent every non-trivial, reduced word in $A*B$, we see that that $Z(A*B)$ must
 be trivial.
+\end{proof}
 
 \section*{Chapter 4}
 

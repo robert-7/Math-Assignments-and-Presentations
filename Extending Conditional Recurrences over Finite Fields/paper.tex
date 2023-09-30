@@ -149,9 +149,10 @@ solution is of form in Equation~\ref{eq:closed-form-no-repeated-roots}.
 f_n=\sum_{i=1}^r C_{i}\lambda_j
 \label{eq:closed-form-no-repeated-roots}
 \end{equation}
+
 Otherwise, we use a proof for Theorem~\ref{thm:repeated-roots} (given and proven in
 \cite{bib:solve-lin-rec-field}) to indicate how to handle repeated roots. 
-\\
+
 \begin{theorem}
 Let $a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_{d}a_{n-d}$ be a linear recursion of order $d$ with
 $c_i \in K$. Assume $1 - c_1x - c_2x^2 - \cdots - c_{d}x^d$ factors in $K[x]$ over its reciprocal roots - the
@@ -172,7 +173,6 @@ f_n=\sum_{i=1}^r\sum_{j=0}^{m_i-1} C_{i,j}\binom{n}{j}\lambda_j
 Below are some examples demonstrating the theorems mentioned earlier. Interesting facts are also
 observed regarding the sequences over various finite fields. Examples~\ref{ex:fib-sol-R} and
 \ref{ex:fib-sol-F_5} showcase nice applications of theory mentioned earlier.
-\\
 
 \begin{example}
 If we're being to asked to solve $f(n)$, then we'll be asked to find the solutions over a 2-dimensional space
@@ -186,7 +186,6 @@ $C_1=\frac{1}{\sqrt{5}}$ and $C_2=-\frac{1}{\sqrt{5}}$.
 
 However, the math turns out quite different under different fields as we see in Example
 \ref{ex:fib-sol-F_5}.
-\\
 
 \begin{example}
 If we're being to asked to solve $g(n)$, then we'll be asked to find the solutions over a 2-dimensional space
@@ -244,7 +243,6 @@ Field=7: & 0 & 1 & 1 & 2 & 3 & 5 & 1 & 6 & 0 & 6 & 6  & 5  & 4  & 2  & 6  & 1  &
 If the reader turns their attention to Figures~\ref{fig:fib_F2} and~\ref{fig:fib_F5}, they'll notice the
 pattern that appears every 3 and 20 terms, respectively. These pattern are not a coincidence and are
 proven in the next example.
-\\
 
 \begin{example}
 Looking at $f_n=f_{n-1}+f_{n-2}$ over $\mathbb{F}_2$, we'll see that
@@ -275,7 +273,6 @@ The characteristic polynomial for the Fibonacci sequence was able to be factored
 However, this need not always be the case. A simple explanation is that a problem arises when your roots
 to the characteristic equation are not in your field. We see this happens in Example
 \ref{ex:cubic-irred}.
-\\
 
 \begin{example}
 If we're being to asked to solve $h(n)=h(n-3)$ over $\mathbb{F}_5$ where $h(0)=0$, $h(1)=1$, and $h(2)=2$,
@@ -431,7 +428,6 @@ $
 $
 
 At this point, we use a Theorem 2 from~\cite{bib:gen_cond_rec}. We'll declare it below.
-\\
 
 \begin{theorem}
 If $D=D(E)=detP$, then $\{q_n\}$  satisfies the recurrence relation whose characteristic polynomial is
@@ -494,7 +490,7 @@ $\{q_n\}$ and ${p_n}$ where $p_n=7p_{n-3}-p_{n-6}$.
 The next example showcases the characteristic polynomial can be factored over finite field
 $\mathbb{F}_2$ and $\mathbb{F}_4$, but no other tested field. However, a precaution needs to be taken
 since the initial conditions need to be altered to satisfy the newly obtained linear recursion. 
-\\
+
 \begin{example}
 Suppose $q_n$ is defined like so:
 \begin{align*}

@@ -7,11 +7,11 @@
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{booktabs}
+\usepackage{float}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{courier}
-\usepackage{float}
-\usepackage{filecontents}% <-- useful for embedding external files in the main file
+% \usepackage{filecontents}% <-- useful for embedding external files in the main file
 
 \theoremstyle{definition}
 \newtheorem{example}{Example}[section]
@@ -37,7 +37,7 @@ one unit of time, then we can say the worst case scenario for the Binary Search 
 $T(n)=T\left(\left\lfloor\frac{n}{2}\right\rfloor\right)+1$ where $T(1)=1$. On a separate note,
 historically speaking, they seem to simply garner a mathematical curiosity. The Fibonacci recursion is
 one of the oldest recurrence relations to date. This is because its simple pattern, yet complex proof
-for a solution, demonstrates its importance to their study. 
+for a solution, demonstrates its importance to their study.
 
 However, the above mentioned examples are examples of ``unconditional recurrence relations''. That is,
 the $n^{th}$ term of any sequence depends on one set of previous terms. However, we are also
@@ -70,7 +70,7 @@ T\left(\frac{n-1}{2}\right) & \equiv 1 \mod 2 \\
 Lastly, we're interested in understanding how to extend these recurrence relations to finite fields. One
 application of this occurs in Linear-Feedback-Shift-Registers. [They] are an efficient way of describing
 and generating certain sequences in hardware implementations~\cite{bib:lfsr} and are defined over
-various fields of the form $\mathbb{F}_{2}$.  
+various fields of the form $\mathbb{F}_{2}$.
 
 For the purpose of this paper, we'll be focusing on conditional and unconditional linear recurrences.
 We'll be explaining their general structure over various fields -- focusing on finite fields and
@@ -84,7 +84,7 @@ Let's go back to the Fibonacci recursion $f_n=f_{n-1}+f_{n-2}$ where $f_0=0$ and
 output for the sequence can be seen in Table~\ref{tab:fib-output}. Moreover, if we let
 $f(n)=\frac{\phi^n-\overline{\phi}^n}{\sqrt{5}}, \phi=\frac{1+\sqrt{5}}{2}, \overline{\phi}=\frac{1-\sqrt{5}}{2}$,
 then we can make the observation that $f_n=f(n)$. We say that $f(n)$ is the closed-form solution to the
-linear recurrence relation $f_n$. 
+linear recurrence relation $f_n$.
 
 Similarly, we can define the Fibonacci recursion over a different field. Suppose we're interested in the
 sequence output over the field $\mathbb{F}_5$. Then let $g_n \equiv f_n \pmod 5$ and $g(n)=2n3^n$. Then
@@ -151,7 +151,7 @@ f_n=\sum_{i=1}^r C_{i}\lambda_j
 \end{equation}
 
 Otherwise, we use a proof for Theorem~\ref{thm:repeated-roots} (given and proven in
-\cite{bib:solve-lin-rec-field}) to indicate how to handle repeated roots. 
+\cite{bib:solve-lin-rec-field}) to indicate how to handle repeated roots.
 
 \begin{theorem}
 Let $a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_{d}a_{n-d}$ be a linear recursion of order $d$ with
@@ -259,7 +259,7 @@ g(n+20)
 &=2n(3^n)(3^{4^{5}})+2(20)(3^n)(3^{4^{5}}) \\
 \end{align*}
 
-However, the $ord(3)=4$, so $3^{4^{5}}=1$, and so this simplifies to $2n3^n$. 
+However, the $ord(3)=4$, so $3^{4^{5}}=1$, and so this simplifies to $2n3^n$.
 \label{ex:period_fib_F5}
 \end{example}
 
@@ -278,7 +278,7 @@ to the characteristic equation are not in your field. We see this happens in Exa
 If we're being to asked to solve $h(n)=h(n-3)$ over $\mathbb{F}_5$ where $h(0)=0$, $h(1)=1$, and $h(2)=2$,
 then we'll be asked to find the solutions over a 3-dimensional space in $\mathbb{F}_5$ satisfying
 $\lambda^{3}-1=(\lambda-1)(\lambda^2+\lambda+1)=0$. But under the $\mathbb{F}_5$, the $h_1(x)=x^2+x+1$ is
-irreducible since it has $\deg(h)=2$ and $h(x)\ne 0, \forall x\in \mathbb{F}_5$. 
+irreducible since it has $\deg(h)=2$ and $h(x)\ne 0, \forall x\in \mathbb{F}_5$.
 \label{ex:cubic-irred}
 \end{example}
 
@@ -489,7 +489,7 @@ $\{q_n\}$ and ${p_n}$ where $p_n=7p_{n-3}-p_{n-6}$.
 
 The next example showcases the characteristic polynomial can be factored over finite field
 $\mathbb{F}_2$ and $\mathbb{F}_4$, but no other tested field. However, a precaution needs to be taken
-since the initial conditions need to be altered to satisfy the newly obtained linear recursion. 
+since the initial conditions need to be altered to satisfy the newly obtained linear recursion.
 
 \begin{example}
 Suppose $q_n$ is defined like so:
@@ -516,11 +516,11 @@ Substituting $E=\lambda^2$ implies we need to solve $p(\lambda)=\lambda^2-3$ -- 
 whose solutions are our basis for the 2-dimensional vector space that satisfies both $\{q_n\}$ and
 ${p_n}$ where $p_n=3p_{n-2}$. In this case the closed form solution is
 $q_n=\left(\frac{2+\sqrt{3}}{3}\right)(\sqrt{3})^n+\frac{2+\sqrt{3}}{3}(-\sqrt{3})^n$. However, for this
-to hold, the $q_0$ must be set to $q_0=\frac{4}{3}$ since $q_2={4}=3q_0$. 
+to hold, the $q_0$ must be set to $q_0=\frac{4}{3}$ since $q_2={4}=3q_0$.
 
 Similarly, the reader can note that if factoring $\lambda^2-3$ over $\mathbb{F}_2$ and $\mathbb{F}_4$ is
 possible. Similarly, since the the sequence outputs all zeros, and so the initial conditions needed to
-be modified as well. 
+be modified as well.
 
 It's output can be seen in the table below.
 
@@ -546,7 +546,7 @@ Field=$\mathbb{F}_{13}$: & 1 & 2 & 4 & 6 & 12 & 5  & 10 & 2  & 4   & 6   & 12  &
 \label{my-label}
 \end{table}
 
-However, over other tested fields, no closed form solution can be found since $\lambda^2-3$ is irreducible. 
+However, over other tested fields, no closed form solution can be found since $\lambda^2-3$ is irreducible.
 \end{example}
 
 \section{Conclusion}
@@ -554,21 +554,21 @@ However, over other tested fields, no closed form solution can be found since $\
 Therefore, it can be concluded that there there are many applications of finite fields to the study of linear
 recurrences. From the study of periods to the more important study of irreducibles in characteristic
 polynomials, for conditional or unconditional recurrences, these will play a role in understanding recurrences
-altogether. 
+altogether.
 
 \begin{thebibliography}{9}
 
 \bibitem{bib:solve-lin-rec-field}
   K. Conrad,
   \emph{Solving Linear Recursion over all Fields},
-  Expository Paper, \textit{http://www.math.uconn.edu/~kconrad/blurbs/linmultialg/linearrecursion.pdf}
+  Expository Paper, \url{http://www.math.uconn.edu/~kconrad/blurbs/linmultialg/linearrecursion.pdf}
 
 \bibitem{bib:successor-explained}
   D. Detemple, W. Webb,
   \emph{Combinatorial Reasoning},
-  (Chapter 5.2.1 - 5.2.2), 
-  2014. Online at \texttt{https://goo.gl/E7VT7m} %used a URL shortener to eliminate a bug
-  
+  (Chapter 5.2.1 - 5.2.2),
+  2014. Online at \url{https://goo.gl/E7VT7m} %used a URL shortener to eliminate a bug
+
 \bibitem{bib:gen_cond_rec}
   D. Panario, M. Sahin, Q. Wang, W. Webb,
   \emph{General conditional recurrences},
@@ -579,7 +579,7 @@ altogether.
   The University of Sydney
   \emph{Linear Feedback Shift Registers}
   Math3024 Elementary Cryptography and Protocols
-  Online at \texttt{http://goo.gl/RMFLh3}
+  Online at \url{http://goo.gl/RMFLh3}
 
 \end{thebibliography}
 

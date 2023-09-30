@@ -156,7 +156,7 @@ $a_i\in \F_2, \varepsilon_i\in \{-1, 1\}$. We need to show that $\varepsilon_i \
 \begin{align*}
 \phi(w)
 &=\phi(a_{1}^{\varepsilon_1}a_{2}^{\varepsilon_2}\ldots a_{n}^{\varepsilon_n}) \\
-&=\phi(a_{1}^{\varepsilon_1})+\phi(a_{2}^{\varepsilon_2})+\cdots +\phi(a_{n}^{\varepsilon_n}) 
+&=\phi(a_{1}^{\varepsilon_1})+\phi(a_{2}^{\varepsilon_2})+\cdots +\phi(a_{n}^{\varepsilon_n})
 \end{align*}
 
 However, we know that $\phi(x)=\phi(y)$ and $\phi(x^{-1})=\phi(y^{-1})$. So without loss of generality:
@@ -172,8 +172,8 @@ However, we know that $\phi(x)=\phi(y)$ and $\phi(x^{-1})=\phi(y^{-1})$. So with
 
 However, $\phi(w)=0$. Therefore, $\phi(x)^{\varepsilon_1+\varepsilon_2+\cdots +\varepsilon_n}=0$. But
 since $\phi(x)=1$ we have that $1+1+\cdots+1\equiv 0\Mod3$ (where we have
-$\varepsilon_1+\varepsilon_2+\cdots +\varepsilon_n$ ones). However, this implies 
-$\varepsilon_1+\varepsilon_2+\cdots +\varepsilon_n \equiv 0 \Mod{3}$. Therefore, $w\in K'$ and so 
+$\varepsilon_1+\varepsilon_2+\cdots +\varepsilon_n$ ones). However, this implies
+$\varepsilon_1+\varepsilon_2+\cdots +\varepsilon_n \equiv 0 \Mod{3}$. Therefore, $w\in K'$ and so
 $K\subseteq K'$.
 
 In conclusion, $K=K'$.
@@ -212,7 +212,7 @@ beginning of this question. Start by adding $xy^{-1}$ (which can map point $a$ t
 (which can map point $b$ to $b'$) to $S$ as they are not inverses of each other. We proceed by adding
 $xxx$ (which can map point $c$ to $c'$) to $S$. We also note these three words generate $xyy$, $yyx$,
 and $yyy$. We finally add $xyx$ (which can map point $d$ to $d'$) to $S$. We also note that $xy^{-1},
-x^{-1}y$, and $xyx$ generate the remaining words $xxy$, $yxx$, and $yxy$. 
+x^{-1}y$, and $xyx$ generate the remaining words $xxy$, $yxx$, and $yxy$.
 
 At this point, all words of length 2 and 3 can be generated. Therefore, the basis for $\mathcal{F}$ is
 $S=\left\{xy^{-1}, x^{-1}y, xxx, xyx\right\}$.
@@ -244,13 +244,13 @@ as it doesn't freely reduce.
 
 \textbf{Case 2}: Suppose $w=b_{1}a_{1}b_{2}a_{2}\ldots b_{n}a_{n}$, where
 $a_1,a_2,\ldots ,a_n, b_1,b_2,\ldots b_n$ are not the identity and $n\geq 1$. Then let $x=b_1$ and refer
-to \textbf{Case 1} for the proof structure. 
+to \textbf{Case 1} for the proof structure.
 
 \textbf{Case 3.a}:
 Suppose $w=a$, where $a$ is not the identity in $A$. Then let $x=b$ for some $b\in B$ and look at the word
 $wxw^{-1}x^{-1}$. We see that $wxw^{-1}x^{-1}=aba^{-1}b^{-1}$ which does not reduce freely.
 
-\textbf{Case 3.b}: 
+\textbf{Case 3.b}:
 Suppose $w=a_{1}b_{1}a_{2}b_{2}\ldots a_{n}$, for $n\geq 2$ and where $a_1,a_2,\ldots ,a_n, b_1,b_2,\ldots b_{n-1}$ are not the identity. Then let $x=b_{n-1}$ and look at the word $wxw^{-1}x^{-1}$. We see that:
 
 \begin{align*}
@@ -266,7 +266,7 @@ $wxw^{-1}x^{-1}$. We see that $wxw^{-1}x^{-1}=bab^{-1}a^{-1}$ which does not red
 
 \textbf{Case 4.b}: Suppose $w=b_{1}a_{1}b_{2}a_{2}\ldots b_{n}$, for $n\geq 2$ and where
 $a_1,a_2,\ldots ,a_{n-1}, b_1,b_2,\ldots b_n$ are not the identity. Then let $x=a_{n-1}$ and refer to
-\textbf{Case 3} for the proof structure. 
+\textbf{Case 3} for the proof structure.
 
 Since these 4 cases represent every non-trivial, reduced word in $A*B$, we see that that $Z(A*B)$ must
 be trivial.
@@ -295,8 +295,8 @@ $S^G=\left\{g^{-1}b^{i}g|\forall g\in G, \forall i \in \Z \right\}$. Therefore, 
 can compute $g_{k,m,n}^{-1}(b^{i}(g_{k,m,n}(x)))$. We note that:
 
 \begin{itemize}
-\item $g_{k,m,n}(x)=\frac{2^{n+k}x+m}{2^k}$ 
-\item $g_{k,m,n}^{-1}(x)=\frac{2^{n+k}x-m}{2^k}$ 
+\item $g_{k,m,n}(x)=\frac{2^{n+k}x+m}{2^k}$
+\item $g_{k,m,n}^{-1}(x)=\frac{2^{n+k}x-m}{2^k}$
 \item $b^{i}(x)=x+i$ % chktex 17
 \end{itemize}
 % chktex 17
@@ -327,7 +327,7 @@ Therefore, to do this we need to show that: \\
 
 \textbf{Step 2.a.i: Show $S^G$ is closed under composition.}
 
-Let $f_{i,n}(x), f_{j,m}(x)$ be $\in S^G$. Then: 
+Let $f_{i,n}(x), f_{j,m}(x)$ be $\in S^G$. Then:
 \begin{align*}
 f_{i,n}(f_{j,m}(x))
 &=f_{i,n}(x+\frac{j}{2^{m}}) \\
@@ -368,7 +368,7 @@ $\phi(f_{i,n}(x))=\frac{i}{2^n}$. \\
 
 To see that the mapping is one-to-one we suppose some reduced fractions
 $\frac{i_{1}}{2^{n_1}}, \frac{i_{2}}{2^{n_2}} \in \Z[\frac{1}{2}]$ are such that
-$\frac{i_{1}}{2^{n_1}} = \frac{i_{2}}{2^{n_2}}$. Adding $x$ to both sides gives us 
+$\frac{i_{1}}{2^{n_1}} = \frac{i_{2}}{2^{n_2}}$. Adding $x$ to both sides gives us
 $x+\frac{i_{1}}{2^{n_{1}}}=x+\frac{i_{2}}{2^{n_{2}}}\Leftrightarrow f_{i_{1},n_{1}}(x)=f_{i_{2},n_{2}}(x)$. \\
 
 Therefore, $\phi$ is a bijection. \\

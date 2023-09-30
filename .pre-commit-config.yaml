@@ -4,12 +4,6 @@ repos:
     rev: v4.4.0
     hooks:
       - id: trailing-whitespace
-        # TODO: exclude our latex files for now until we have properly automated builds and deploys [#26]
-        exclude: >-
-          (?x)^(
-              .*\.sty$|
-              .*\.tex$
-          )$
       - id: end-of-file-fixer
       - id: check-yaml
   - repo: https://github.com/markdownlint/markdownlint

@@ -3,7 +3,7 @@
 %%% option passed to the outer theme
 %    progressstyle=fixedCircCnt,   % fixedCircCnt, movingCircCnt (moving is default)
   ]{Feather}
-  
+
 % If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
 
 % Change the bar colors:
@@ -78,15 +78,15 @@
 }
 
 \author[Robert Lech]
-{      
+{
       Robert Lech - {\ttfamily robert.lech@carleton.ca}
 }
 
 \institute[]
 {
-      Faculty of Mathematics, 
+      Faculty of Mathematics,
       Carleton University\\
-  
+
   %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
 }
 
@@ -117,7 +117,7 @@
 %-------------------------------------------------------
 \subsection{\SoneSSdefinitions}
 \begin{frame}{\Sone}{\SoneSSdefinitions}
-% Include some basic definitions 
+% Include some basic definitions
 \begin{definition}
 A \textbf{\textcolor{\DefColor}{graph}} is a tuple $G=(V, E)$ where $V$ is the set of \textbf{vertices} and $E$ is the set of \textbf{edges}, each with endpoints in $V$.
 \end{definition}
@@ -142,12 +142,12 @@ A \textbf{\textcolor{\DefColor}{simple graph}} is a graph with \textbf{no loops 
   \caption{Simple vs.\ non-simple graph}
   \label{fig:section1_simple}
 \end{figure}
-  
+
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}{\Sone}{\SoneSSdefinitions}
-% Include some basic definitions 
+% Include some basic definitions
 \begin{definition}
 Let $C=v_{0}e_{1}v_{1}e_{2}\ldots e_{k}v_{k}$ be an \textbf{alternating sequence of vertices and edges}. If $v_{0}, v_{1}, \ldots, v_{k-1}$ are distinct, $e_{1}, e_{2}, \ldots, e_{k}$ are distinct, and $v_{0}=v_{k}$, then $C$ is a \textbf{\textcolor{\DefColor}{cycle}}.
 \end{definition}
@@ -157,12 +157,12 @@ Let $C=v_{0}e_{1}v_{1}e_{2}\ldots e_{k}v_{k}$ be an \textbf{alternating sequence
 \begin{definition}
 Let $G$ be a graph with \textbf{no cycles}. Then we say the graph is \textbf{\textcolor{\DefColor}{acyclic}}.
 \end{definition}
-  
+
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}{\Sone}{\SoneSSdefinitions}
-% Include some basic definitions 
+% Include some basic definitions
 \begin{definition}
 Let $G=(V,E)$ be a graph where $V=\{V_{1}, V_{2}, \ldots, V_{k}\}$ where for vertices $v_{i} \in V_{i},v_{j} \in V_{j}$ s.t. $i\neq j$, there \textbf{doesn't exists a path between $v_{i}$ and $v_{j}$}. Then we say $G$ has $k$ \textbf{\textcolor{\DefColor}{components}} or $c(G)=k$.
 \end{definition}
@@ -170,11 +170,11 @@ Let $G=(V,E)$ be a graph where $V=\{V_{1}, V_{2}, \ldots, V_{k}\}$ where for ver
 \pause{}
 
 \begin{definition}
-An acyclic graph with \textbf{1 component} is called a \textbf{\textcolor{\DefColor}{tree}}. 
+An acyclic graph with \textbf{1 component} is called a \textbf{\textcolor{\DefColor}{tree}}.
 
 An acyclic graph with \textbf{more than 1 component} is called a \textbf{\textcolor{\DefColor}{forest}}.
 \end{definition}
-  
+
 \end{frame}
 
 %-------------------------------------------------------
@@ -186,7 +186,7 @@ An acyclic graph with \textbf{more than 1 component} is called a \textbf{\textco
   \caption{Labelled trees with $n=1,2,3,4$ vertices}
   \label{fig:trees_1_to_4}
 \end{figure}
-  
+
 \end{frame}
 
 %-------------------------------------------------------
@@ -216,7 +216,7 @@ n&\# of labelled trees\\
 \caption{Table showing number of labelled trees vs number of vertices}
 \end{table}
 \end{block}
-  
+
 \end{frame}
 %-------------------------------------------------------
 
@@ -244,7 +244,7 @@ n & \# of labelled trees                   \\
 \label{tab:values-relationship}
 \end{table}
 \end{block}
-  
+
 \end{frame}
 
 %-------------------------------------------------------
@@ -252,11 +252,11 @@ n & \# of labelled trees                   \\
 \begin{frame}{\Sone}{\SoneSStheorem}
 % State the Theorem
 \begin{block}{The Theorem}
-The are $n^{n-2}$ labelled trees with $n$ vertices. 
+The are $n^{n-2}$ labelled trees with $n$ vertices.
 \end{block}
-  
-\pause{} 
- 
+
+\pause{}
+
 \begin{block}{Approach}
 Prove this with two methods:
 \begin{itemize}
@@ -265,7 +265,7 @@ Prove this with two methods:
   \item Finding a Bijection
 \end{itemize}
 \end{block}
-  
+
 \end{frame}
 
 %-------------------------------------------------------
@@ -289,7 +289,7 @@ Let $G=(V,E)$ and $G'=(V',E')$ such that \textbf{$V'$ is a subset of $V$ and $E'
 \begin{definition}
 A \textbf{\textcolor{\DefColor}{rooted forest}} is a forest where \textbf{every component has a distinguished vertex selected to be `the root'}.
 \end{definition}
-  
+
 \end{frame}
 
 %-------------------------------------------------------
@@ -326,7 +326,7 @@ Count the number of rooted trees of $n$ vertices in \textbf{two ways}
 \begin{block}{Fact}
 Let $\mathcal{F}_{n,k}$ be the set of all rooted forests with $n$ vertices and $k$ components. Let $F_{n,k}$ be a directed forest with all edges facing away from the root vertex.
 
-\textbf{Fact}: Let $F'\subseteq F$, both with $n$ vertices. Then $c(F')>c(F)$. 
+\textbf{Fact}: Let $F'\subseteq F$, both with $n$ vertices. Then $c(F')>c(F)$.
 
 Note that each component $F$ is acyclic $\implies$ each edge is a cut edge $\implies$ $F$
 \textbackslash{} $\{e\}$ splits a component in two.
@@ -335,7 +335,7 @@ Note that each component $F$ is acyclic $\implies$ each edge is a cut edge $\imp
 \pause{}
 
 \begin{block}{Define}
-Let the sequence $F_{1},\ldots, F_{k}$ of forests be a refining sequence. 
+Let the sequence $F_{1},\ldots, F_{k}$ of forests be a refining sequence.
 \begin{itemize}
   \item That is: $\forall i$, $F_{i+1}\subseteq F_{i}$.
 \end{itemize}
@@ -374,7 +374,7 @@ We'll count this in two different ways. First, by starting at $F_{1}$ and workin
 
 \begin{block}{Equation}
 We note that for any subgraph $F_{k}$ of $F_{1}$, there are $(k-1)!$ ways remove % chktex 40
-$(k-1)$ edges. Therefore, we have that: 
+$(k-1)$ edges. Therefore, we have that:
 
 \[
   N^{*}(F_{k})=N(F_{k})(k-1)!
@@ -445,7 +445,7 @@ In this proof, we'll aim to uniquely encode every tree by a sequence $(a_{1},a_{
 \subsection{\SthreeSSproof}
 \begin{frame}{\Sthree}{\SthreeSSproof}
 % Prove the theorem
-We want to show $|\mathcal{T}_{n}|=n^{n}$. Naturally, we'd like to there's a bijection between this set and the set of mappings from $N$ into $N$. 
+We want to show $|\mathcal{T}_{n}|=n^{n}$. Naturally, we'd like to there's a bijection between this set and the set of mappings from $N$ into $N$.
 
 Let $f:N \rightarrow N$ be any map. We represent $f$ as a directed graph $\vec G_{f}$ by drawing arrows from $i$ to $f(i)$.
 
@@ -481,7 +481,7 @@ This is represented by the directed graph below:
 Note:
 \begin{itemize}
   \item one, and only one, edge emanating from each vertex
-  \item implies one, and only one, cycle per component 
+  \item implies one, and only one, cycle per component
 \end{itemize}
 
 \pause{}
@@ -512,12 +512,12 @@ Note:
 \begin{itemize}
   \item In the second row, we have $f(a_{1}), f(a_{2}), \ldots, f(a_{l})$ in a specific order.
   \pause{}
-  \item Let $\bigcirc=f(a_{1})$ and $\square=f(a_{l})$. 
+  \item Let $\bigcirc=f(a_{1})$ and $\square=f(a_{l})$.
   \pause{}
   \item Create a $(f(a_{1}),f(a_{l}))$-path such that each vertex in $M$ acts as its own root with all incoming vertices dangling from that root.
 \end{itemize}
 
-\pause{} 
+\pause{}
 
 \begin{figure}
   \includegraphics[width=0.6\linewidth]{images/section3_tree.png}
@@ -541,11 +541,11 @@ Note:
   \pause{}
   \item Create the mapping $f$. This mapping is your encoding of the $\{(t; \bigcirc, \square)\}$
 \end{enumerate}
-  
+
 \pause{}
-  
+
 A bijection from $\{(t; \bigcirc, \square)\} \rightarrow (a_{1},a_{2},\ldots a_{n})$ implies a bijection A bijection from $t \rightarrow (a_{1},a_{2},\ldots a_{n-2})$ -- and so we're done.
-  
+
 \end{frame}
 
 %-------------------------------------------------------
@@ -556,13 +556,13 @@ A bijection from $\{(t; \bigcirc, \square)\} \rightarrow (a_{1},a_{2},\ldots a_{
 % show references
 \begin{block}{\SfourSSreference}
 \begin{thebibliography}{9}
-\bibitem{latexcompanion} 
-Aigner, Martin, and Ziegler Gunter M. 
-\textit{Proofs from the book}. 
+\bibitem{latexcompanion}
+Aigner, Martin, and Ziegler Gunter M.
+\textit{Proofs from the book}.
 5th ed., Springer, 2014.
 \end{thebibliography}
 \end{block}
-  
+
 \end{frame}
 
 %-------------------------------------------------------

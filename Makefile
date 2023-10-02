@@ -6,7 +6,7 @@ build:
 
 # Target for cleaning up intermediary LaTeX files
 clean:
-	find . -type f \( -name '*.aux' -o -name '*.log' -o -name '*.out' \) -delete
+	find . -type f \( -name '*.aux' -o -name '*.log' -o -name '*.nav' -o -name '*.out' -o -name '*.snm' -o -name '*.toc' \) -delete
 
 # By default, running 'make' will trigger the 'build' target
 all: build

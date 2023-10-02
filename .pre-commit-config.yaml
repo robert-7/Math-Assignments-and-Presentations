@@ -30,6 +30,10 @@ repos:
     rev: 2.1.6
     hooks:
       - id: shellcheck
+  - repo: https://github.com/mrtazz/checkmake.git
+    rev: 0.2.2
+    hooks:
+      - id: checkmake
   - repo: local
     hooks:
       - id: chktex
@@ -39,3 +43,9 @@ repos:
         args: ['-l', '.chktexrc']
         language: system
         files: .*/.*\.tex$
+      - id: makefile-syntax-checker
+        name: Check Makefile Syntax
+        entry: make -n
+        files: Makefile
+        language: system
+        pass_filenames: false

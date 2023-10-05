@@ -1,3 +1,3 @@
 all
-exclude_rule 'MD007'
+rule 'MD007', :indent => 2
 exclude_rule 'MD013'

@@ -2,7 +2,7 @@
 
 # Target for building LaTeX files
 build:
-	ci/build.sh
+	scripts/build.sh
 
 # Target for cleaning up intermediary LaTeX files
 clean:
@@ -10,7 +10,7 @@ clean:
 
 # Target for uploading all files to Google Drive
 upload:
-	ci/upload_to_gdrive.sh
+	scripts/upload_to_gdrive.sh
 
 # By default, running 'make' will trigger the 'build' target
 all: build

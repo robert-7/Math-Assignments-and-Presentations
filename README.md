@@ -18,12 +18,7 @@ All the hooks are also run automatically via CI when pushing, so installing them
 
 #### Installing dependencies
 
-On Ubuntu, run this command:
-
-```shell
-sudo apt update
-sudo apt install -y chktex shellcheck texlive-full
-```
+On Ubuntu, run `scripts/install.sh` to install dependencies.
 
 #### Makefile Usage
 

@@ -32,4 +32,5 @@ Makefile is used to simplify the steps needed to build and clean the repository.
 ```shell
 make build
 make clean
+make upload
 ```

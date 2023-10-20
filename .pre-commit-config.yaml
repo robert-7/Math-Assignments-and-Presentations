@@ -3,49 +3,53 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: check-shebang-scripts-are-executable
       - id: check-yaml
+      - id: end-of-file-fixer
+      - id: file-contents-sorter
+        files: 'Solving Linear Relations using Linear Algebra/test_results/requirements.txt'
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+  - repo: https://github.com/pylint-dev/pylint
+    rev: v3.0.1
+    hooks:
+      - id: pylint
+        name: static analysis python files
+        args: ["--ignore=tests/"]
+        additional_dependencies: ["numpy==1.26.1"]
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+      - id: flake8
+        name: lint python files
   - repo: https://github.com/markdownlint/markdownlint
     rev: v0.12.0
     hooks:
       - id: markdownlint
+        name: lint markdown files
         args: ['--style', '.markdownlint.rb']
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.32.0
     hooks:
       - id: yamllint
-  - repo: https://github.com/pycqa/flake8
-    rev: 6.1.0
-    hooks:
-      - id: flake8
-  - repo: https://github.com/pylint-dev/pylint
-    rev: v2.17.5
-    hooks:
-      - id: pylint
-        args: ["--ignore=tests/"]
-        # TODO: clean up the file below [#14]
-        exclude: 'Solving Linear Relations using Linear Algebra/test_results.py'
+        name: lint yaml files
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: 2.1.6
     hooks:
       - id: shellcheck
+        name: lint bash files
   - repo: https://github.com/mrtazz/checkmake.git
     rev: 0.2.2
     hooks:
       - id: checkmake
+        name: lint makefile
   - repo: local
     hooks:
       - id: chktex
-        name: chktex
+        name: lint latex files
         description: This hook runs chktex for LaTeX linting.
         entry: chktex
         args: ['-l', '.chktexrc']
         language: system
         files: .*/.*\.tex$
-      - id: makefile-syntax-checker
-        name: Check Makefile Syntax
-        entry: make -n
-        files: Makefile
-        language: system
-        pass_filenames: false

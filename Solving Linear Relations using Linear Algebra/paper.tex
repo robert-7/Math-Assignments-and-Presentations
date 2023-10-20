@@ -1,14 +1,14 @@
-% Robert Lech - June 2015
-
 \documentclass{article}
 \usepackage{times}
 \usepackage{color}
 \usepackage{amsmath}
+\usepackage{amssymb} % NOTE: needed for \mathbb{R}
+
 
 \begin{document}
 
 % Article top matter
-\title{How to Solve the Fibonacci Recursion using Linear Algebra} %\LaTeX is a macro for printing the Latex logo
+\title{How to Solve the Fibonacci Recursion using Linear Algebra}
 \author{Robert Lech\\
 		Carleton University,\\
 		Ottawa, Canada,\\
@@ -18,16 +18,11 @@
 \maketitle
 
 \begin{abstract}
-We're curious to understand why the Fibonacci recursion $R(n)=R(n-1)+R(n-2), R(0)=R(1)=1$ has the closed form solution $R(n)=C_{1}\lambda_{1}^{n}+C_{2}\lambda_{2}^{n}$ where $C_{1}=\frac{1}{\sqrt{5}}$ and $C_{2}=-\frac{1}{\sqrt{5}}$.
+We're curious to understand why the Fibonacci recursion $R(n)=R(n-1)+R(n-2), R(0)=R(1)=1$ has the closed-form solution $R(n)=C_{1}\lambda_{1}^{n}+C_{2}\lambda_{2}^{n}$ where $C_{1}=\frac{1}{\sqrt{5}}$ and $C_{2}=-\frac{1}{\sqrt{5}}$.
 In this paper, we'll see how to solve this recursion using Linear Algebra techniques.
-
-\textcolor{red}{FINISH THIS}
 \end{abstract}
 
-\section{Introduction}
-\textcolor{red}{FINISH THIS}
-
-\section{Stuff}
+\section{Core Work}
 We're interested in solving:
 
 \begin{equation}
@@ -255,24 +250,10 @@ y_{0}
 
 This implies that
 $y_{n}=\frac{\lambda_{1}^{n} - \lambda_{2}^{n}}{\lambda_{1}-\lambda_{2}}=\left(\frac{1}{\sqrt{5}}\right)\lambda_{1}^{n}+\left(-\frac{1}{\sqrt{5}}\right)\lambda_{2}^{n}$.
-A similar argument can be applied to recursions of the form
-$R(n)=\sum_{i=1}^{k}c_{i}R(n-i)$ where $c_{i}$ is a constant.
 
-\section{Limitations}
-This method has limitations. It cannot be applied to recursions of the form
-$R(n)=\sum_{i=1}^{k}c_{i}R(n-i)$ where $c_{i}$ is not a constant. A
-simple example would be $R(n)=nR(n-1), R(1)=1$. It is quite visible from
-telescoping that $R(n)=(n!)$. However, one would not be able to put this into
-any simpler form using this method since computing
-$\vec{C}^n=\prod_{i=1}^{n}\begin{bmatrix}i\end{bmatrix}=n! $.
+A similar argument can be applied to recursions of the form below:
 
-\begin{thebibliography}{9}
-%The \bibitem is to start a new reference.  Ensure that the cite_key is
-%unique.  You don't need to put each element on a new line, but I did
-%simply for readability.
-
-\textcolor{red}{WIKIPEDIA}
-
-\end{thebibliography} %Must end the environment
-
-\end{document}  %End of document.
+\begin{align*}
+R(n)=\sum_{i=1}^{k}c_{i}R(n-i) & \text{, for } c_{i} \in \mathbb{R}
+\end{align*}
+\end{document}

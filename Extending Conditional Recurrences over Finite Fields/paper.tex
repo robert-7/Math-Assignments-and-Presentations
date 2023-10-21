@@ -129,11 +129,11 @@ a basis of solutions, we factor about a $\lambda^{n-d}$ from the equation and we
 \end{equation}
 
 The reader can note that a similar method can be used to derive the characteristic polynomial. An linear
-operator, denoted $E$, is used in some methods to solve linear relations (see
-\cite{bib:successor-explained} for more information). It's defined as such: let $t_n$ be a sequence
+operator, denoted $E$, is used in some methods to solve linear relations (see~\cite{bib:successor-explained}
+for more information). It's defined as such: let $t_n$ be a sequence
 defined by a linear recurrence relation with constant coefficients. Then this operator is defined by
-$Et_n=t_n+1$ and $E^{j}t_n=t_{n+j}$\cite{bib:gen_cond_rec}. If we rewrite Equation
-\ref{eq:general-linear-recursion}, then we'll see that:
+$Et_n=t_n+1$ and $E^{j}t_n=t_{n+j}$\cite{bib:gen_cond_rec}. If we rewrite Equation~\ref{eq:general-linear-recursion},
+then we'll see that:
 
 \begin{align*}
 0
@@ -150,8 +150,8 @@ f_n=\sum_{i=1}^r C_{i}\lambda_j
 \label{eq:closed-form-no-repeated-roots}
 \end{equation}
 
-Otherwise, we use a proof for Theorem~\ref{thm:repeated-roots} (given and proven in
-\cite{bib:solve-lin-rec-field}) to indicate how to handle repeated roots.
+Otherwise, we use a proof for Theorem~\ref{thm:repeated-roots}
+(given and proven in~\cite{bib:solve-lin-rec-field}) to indicate how to handle repeated roots.
 
 \begin{theorem}
 Let $a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_{d}a_{n-d}$ be a linear recursion of order $d$ with
@@ -171,8 +171,8 @@ f_n=\sum_{i=1}^r\sum_{j=0}^{m_i-1} C_{i,j}\binom{n}{j}\lambda_j
 \subsection{Examples and Applications}
 
 Below are some examples demonstrating the theorems mentioned earlier. Interesting facts are also
-observed regarding the sequences over various finite fields. Examples~\ref{ex:fib-sol-R} and
-\ref{ex:fib-sol-F_5} showcase nice applications of theory mentioned earlier.
+observed regarding the sequences over various finite fields. Examples~\ref{ex:fib-sol-R} and~\ref{ex:fib-sol-F_5}
+showcase nice applications of theory mentioned earlier.
 
 \begin{example}
 If we're being to asked to solve $f(n)$, then we'll be asked to find the solutions over a 2-dimensional space
@@ -184,8 +184,7 @@ $C_1=\frac{1}{\sqrt{5}}$ and $C_2=-\frac{1}{\sqrt{5}}$.
 \label{ex:fib-sol-R}
 \end{example}
 
-However, the math turns out quite different under different fields as we see in Example
-\ref{ex:fib-sol-F_5}.
+However, the math turns out quite different under different fields as we see in Example~\ref{ex:fib-sol-F_5}.
 
 \begin{example}
 If we're being to asked to solve $g(n)$, then we'll be asked to find the solutions over a 2-dimensional space
@@ -197,8 +196,8 @@ $g(n)=2n3^n$.
 \label{ex:fib-sol-F_5}
 \end{example}
 
-The reader can find some sequence outputs in Table~\ref{tab:fib-out} and in Figures~\ref{fig:fib_F2}
-\ref{fig:fib_F3}~\ref{fig:fib_F5} and~\ref{fig:fib_F7} below.
+The reader can find some sequence outputs in Table~\ref{tab:fib-out} and in
+Figures~\ref{fig:fib_F2},~\ref{fig:fib_F3},~\ref{fig:fib_F5}, and~\ref{fig:fib_F7} below.
 
 \begin{table}[!ht]
 \begin{tabular}{lllllllllllllllllllll}
@@ -271,8 +270,7 @@ subsection that a closed-form solution cannot always be found.
 
 The characteristic polynomial for the Fibonacci sequence was able to be factored over $\mathbb{F}_5$.
 However, this need not always be the case. A simple explanation is that a problem arises when your roots
-to the characteristic equation are not in your field. We see this happens in Example
-\ref{ex:cubic-irred}.
+to the characteristic equation are not in your field. We see this happens in Example~\ref{ex:cubic-irred}.
 
 \begin{example}
 If we're being to asked to solve $h(n)=h(n-3)$ over $\mathbb{F}_5$ where $h(0)=0$, $h(1)=1$, and $h(2)=2$,

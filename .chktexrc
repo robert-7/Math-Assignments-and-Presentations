@@ -1,7 +1,5 @@
 CmdLine
 {
-    # Warning 2:  TODO: Look into this. [#16]
-    -n 2
     # Warning 3:  You should enclose the previous parenthesis with ‘{}’.
     #             This is largely ignored by the community as per the link below.
     #             Reason: https://tex.stackexchange.com/questions/529937/why-should-i-enclose-the-previous-parenthesis-with

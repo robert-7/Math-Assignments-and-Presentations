@@ -55,7 +55,7 @@ q_n=
 \end{cases}
 \end{align*}
 
-where $q_0=1$ (as there is only one $0$-step walk) and $q_1=2$ (as there are only two $1$-step walks --
+where $q_0=1$ (as there is only one $0$-step walk) and $q_1=2$ (as there are only two $1$-step walks ---
 a step forward, and a step backward). Moreover, it's also interesting to note that our previous
 interpretation of $T(n)$ is also conditional on the parity of $n$. It can be defined piece-wise as:
 
@@ -73,7 +73,7 @@ and generating certain sequences in hardware implementations~\cite{bib:lfsr} and
 various fields of the form $\mathbb{F}_{2}$.
 
 For the purpose of this paper, we'll be focusing on conditional and unconditional linear recurrences.
-We'll be explaining their general structure over various fields -- focusing on finite fields and
+We'll be explaining their general structure over various fields --- focusing on finite fields and
 approaches to finding their solutions. If their solutions cannot be found using those techniques, we'll
 at least note some observations about their structures.
 
@@ -155,8 +155,8 @@ Otherwise, we use a proof for Theorem~\ref{thm:repeated-roots}
 
 \begin{theorem}
 Let $a_n = c_1a_{n-1} + c_2a_{n-2} + \cdots + c_{d}a_{n-d}$ be a linear recursion of order $d$ with
-$c_i \in K$. Assume $1 - c_1x - c_2x^2 - \cdots - c_{d}x^d$ factors in $K[x]$ over its reciprocal roots - the
-$\lambda$ such that $1/\lambda$ is a root - as $(1-\lambda_{1}x)^{e_1} \ldots (1-\lambda_{r}x)^{e_r}$ where
+$c_i \in K$. Assume $1 - c_1x - c_2x^2 - \cdots - c_{d}x^d$ factors in $K[x]$ over its reciprocal roots --- the
+$\lambda$ such that $1/\lambda$ is a root --- as $(1-\lambda_{1}x)^{e_1} \ldots (1-\lambda_{r}x)^{e_r}$ where
 the $\lambda_i$ are distinct and $e_i \ge 1$. A basis for the solutions of the linear recursion in $K$ is
 given by the $e_i$ sequences
 $\{\lambda_1^n\}, \{\binom{n}{1}\lambda_i^n\}, \{\binom{n}{2}\lambda_1^n\}, \ldots, \{\binom{n}{e_i-1}\lambda_1^n\}$.
@@ -293,7 +293,7 @@ plays a role in this scenario should be a priority to understanding this problem
 \section{Solving a Conditional Linear Recurrence}
 
 Up until now, the topic has been about finding a closed-form solution for a linear recurrence relation.
-However a method exists for solving conditional recurrences -- though it's a little more complex. The
+However a method exists for solving conditional recurrences --- though it's a little more complex. The
 author would like to note that this process is taken directly from~\cite{bib:gen_cond_rec} as it
 conveniently explains the process in perfect detail. The reader can note that this process can be
 extended to any field as the operations are not necessarily limited to $\mathbb{R}$ or $\mathbb{C}$.
@@ -480,7 +480,7 @@ Calculating the determinant, we find that:
 \begin{align*}
 D=(-E)(E^2-7E+1)
 \end{align*}
-Substituting $E=\lambda^3$ implies we need to solve $p(\lambda)=\lambda^6-7\lambda^3+1$ -- a degree 6
+Substituting $E=\lambda^3$ implies we need to solve $p(\lambda)=\lambda^6-7\lambda^3+1$ --- a degree 6
 polynomial whose solutions are our basis for the 6-dimensional vector space that satisfies both
 $\{q_n\}$ and ${p_n}$ where $p_n=7p_{n-3}-p_{n-6}$.
 \end{example}
@@ -510,7 +510,7 @@ Calculating the determinant, we find that:
 \begin{align*}
 D=(-E)(-E+1)-(E)(2)=\cdots=E(E-3)
 \end{align*}
-Substituting $E=\lambda^2$ implies we need to solve $p(\lambda)=\lambda^2-3$ -- a degree 2 polynomial
+Substituting $E=\lambda^2$ implies we need to solve $p(\lambda)=\lambda^2-3$ --- a degree 2 polynomial
 whose solutions are our basis for the 2-dimensional vector space that satisfies both $\{q_n\}$ and
 ${p_n}$ where $p_n=3p_{n-2}$. In this case the closed form solution is
 $q_n=\left(\frac{2+\sqrt{3}}{3}\right)(\sqrt{3})^n+\frac{2+\sqrt{3}}{3}(-\sqrt{3})^n$. However, for this
@@ -564,14 +564,14 @@ altogether.
 \bibitem{bib:successor-explained}
   D. Detemple, W. Webb,
   \emph{Combinatorial Reasoning},
-  (Chapter 5.2.1 - 5.2.2),
+  (Chapter 5.2.1--5.2.2),
   2014. Online at \url{https://goo.gl/E7VT7m} %used a URL shortener to eliminate a bug
 
 \bibitem{bib:gen_cond_rec}
   D. Panario, M. Sahin, Q. Wang, W. Webb,
   \emph{General conditional recurrences},
   Applied Mathematics and Computation 243
-  (2014) 220-231.
+  (2014) 220--231.
 
 \bibitem{bib:lfsr}
   The University of Sydney

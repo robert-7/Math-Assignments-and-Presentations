@@ -163,8 +163,10 @@ Then $M$ is maximal if and only if $G$ contains no $M$-augmenting path.
 \begin{proof}
 $(\Rightarrow)$ Suppose $M$ is a maximal matching. Suppose for a contradiction that $G$ does indeed
 contain an $M$-augmenting path $P = v_0 v_1 \ldots v_{2m} v_{2m+1}$. Then define
-$$M' = (M \setminus \{v_1 v_2, v_3 v_4, \ldots, v_{2m-1} v_{2m}\})
-       \cup \{v_0 v_1, \ldots, v_{2m} v_{2m+1}\}.$$
+\[
+M' = (M \setminus \{v_1 v_2, v_3 v_4, \ldots, v_{2m-1} v_{2m}\})
+       \cup \{v_0 v_1, \ldots, v_{2m} v_{2m+1}\}.
+\]
 Then $|M'| = |M| - m + (m+1) = |M|+1$. Thus $M$ is not maximal. A contradiction.\\
 
 $(\Leftarrow)$. Suppose $G$ does not contain an $M$-augmenting path. Then suppose for a contradiction
@@ -192,8 +194,10 @@ If $G$ is a $3$-regular graph without cut edges, then $G$ has a perfect matching
 \begin{proof}
 We use Tutte's theorem. Let $S \subseteq V$. Let $G_1,\ldots,G_n$ be the odd components
 of $G-S$. Let $V_i = V(G_i)$ and $E_i = E(G_i)$. Let $m_i$ be the number of edges with one end in
-$V_i$ and one end in $S$. Then $$\sum\limits_{v \in V_i} d_G(v_i) = 2|E_i| + m_i$$ and also
-$$\sum\limits_{v \in V_i} d_G(v_i) = 3|V_i|.$$ These imply that $m_i$ is odd. Also, since $G$ has no cut edges,
+$V_i$ and one end in $S$. Then \[\sum\limits_{v \in V_i} d_G(v_i) = 2|E_i| + m_i\] and also
+\[\sum\limits_{v \in V_i} d_G(v_i) = 3|V_i|\]
+
+These imply that $m_i$ is odd. Also, since $G$ has no cut edges,
 $m_i \geq 3$. Hence
 
 \begin{align*}
@@ -218,7 +222,7 @@ $G+uv$ has a Hamilton cycle. Thus we get a Hamilton path $v_0 v_1 \ldots v_k$ in
 $v = v_k$. Let $S = \{v_i : u v_{i+1} \in E\}$ and $T = \{v_i : v v_i \in E\}$. Then
 if $S \cap T \neq \emptyset$, then we could find a Hamilton cycle in $G$,
 which we cannot do. Thus, $S \cap T = \emptyset$. So
-$$d(u) + d(v) = |S| + |T| = |S \cup T| + |S \cap T| < n$$ contradicting our hypothesis that $\delta \geq n/2$.
+\[d(u) + d(v) = |S| + |T| = |S \cup T| + |S \cap T| < n\] contradicting our hypothesis that $\delta \geq n/2$.
 \end{proof}
 
 % BONDY-CHVATAL
@@ -273,7 +277,7 @@ closure, we must have $d'(u) + d'(v) < n$.
 
 Now let $S$ be the set of verticies in $V \setminus \{v\}$ which are non-adjacent to $v$ in $c(G)$.
 Let $T$ be the set of verticies in $V \setminus \{u\}$ which are non-adjacent to $u$ in $c(G)$. It is
-clear that $$|S| = n - 1 - d'(v) \text{ and } |T| = n - 1 - d'(u).$$ By the choice of $u$ and $v$,
+clear that \[|S| = n - 1 - d'(v) \text{ and } |T| = n - 1 - d'(u).\] By the choice of $u$ and $v$,
 every vertex in $S$ has degree at most $d'(u)$, and every vertex in $T \cup \{u\}$ has degree
 at most $d'(v)$. Setting $d'(u) = m$, we find that $c(G)$ has at least $m$ verticies of
 degree at most $m$ and at least $n-m$ verticies of degree less than $n-m$.
@@ -312,7 +316,7 @@ If $G$ is a $k$-regular bipartite graph with $k > 0$, then $G$ has a perfect mat
 Let $S \subseteq X$. By Hall's theorem it is enough to show that
 $|N(S)| \geq |S|$. Let $E_1$ be the set of edges incident with $S$, and let
 $E_2$ be the set of edges incident with $N(S)$. By definition,
-$E_1 \subseteq E_2$. Thus, $$k |N(S)| = |E_2| \geq |E_1| = k|S|$$ which implies $|N(S)| \geq |S|$.
+$E_1 \subseteq E_2$. Thus, \[k |N(S)| = |E_2| \geq |E_1| = k|S|\] which implies $|N(S)| \geq |S|$.
 \end{proof}
 
 % VIZING
@@ -354,7 +358,7 @@ of $G[E_i \cup E_j]$ containing $u$ is an odd cycle.
 Suppose the component of $G[E_i \cup E_j]$ containing $u$, call it $U$, is \emph{not} an odd cycle.
 Then by the last theorem, there is a $2$-edge colouring $\cD$ of $U$ in which both colours are represented
 at $u$. Then recolour the edges of $H$ using $\cD$ and colour all the other edges with $\cC$. This new colouring,
-$\cC'$, is such that $$\sum c'(v) > \sum c(v)$$ which shows that $\cC$ is not optimal. A contradiction.
+$\cC'$, is such that \[\sum c'(v) > \sum c(v)\] which shows that $\cC$ is not optimal. A contradiction.
 \end{proof}
 
 \begin{thm}

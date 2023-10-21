@@ -8,6 +8,12 @@ Various papers and presentations done in LaTeX. Links to compiled PDFs can be fo
 
 ### Set up local linting
 
+```bash
+sudo apt install python3-tk python3-venv
+python -m venv .venv
+source .venv/bin/activate
+```
+
 Linting is done with [`pre-commit`](https://pre-commit.com), a multi-language package manager for pre-commit hooks.
 
 Follow the instructions at <https://pre-commit.com/#install> to install it, then run `pre-commit install` in the repo root to install the git hooks locally. They will run **automatically** every time you commit.

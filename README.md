@@ -6,6 +6,10 @@ Various papers and presentations done in LaTeX. Links to compiled PDFs can be fo
 
 ## Contributing
 
+### Installing dependencies
+
+On Ubuntu, run `scripts/install.sh` to install dependencies.
+
 ### Set up local linting
 
 ```bash
@@ -22,11 +26,7 @@ If you want to run all the checks manually, use `pre-commit run --all-files`. If
 
 All the hooks are also run automatically via CI when pushing, so installing them locally will save you from **realizing you made a mistake only after pushing**.
 
-#### Installing dependencies
-
-On Ubuntu, run `scripts/install.sh` to install dependencies.
-
-#### Makefile Usage
+### Makefile Usage
 
 Makefile is used to simplify the steps needed to build and clean the repository. See commands below for usage:
 

@@ -1,14 +1,40 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
+log() {
+	printf '[install] %s\n' "$1"
+}
+
+log 'Updating apt package index'
 sudo apt update -y
+
+log 'Installing chktex, shellcheck, and texlive-full'
 sudo apt install -y chktex shellcheck texlive-full
 
-# install gdrive
-URL_TO_GDRIVE_BINARY="https://github.com/glotlabs/gdrive/releases/download/3.9.0/gdrive_linux-x64.tar.gz"
-DOWNLOAD_FILE="gdrive"
+# Install gdrive
+URL_TO_GDRIVE_BINARY="https://github.com/glotlabs/gdrive/releases/download/3.9.1/gdrive_linux-x64.tar.gz"
 INSTALL_PATH="/usr/local/bin/gdrive"
-wget "${URL_TO_GDRIVE_BINARY}" -O "${DOWNLOAD_FILE}"
-tar -xzf "${DOWNLOAD_FILE}"
-chmod +x "${DOWNLOAD_FILE}"
-sudo cp "${DOWNLOAD_FILE}" "${INSTALL_PATH}"
-command -v "${DOWNLOAD_FILE}" | grep "${INSTALL_PATH}"
-rm -f "${DOWNLOAD_FILE}"
+TMP_DIR="$(mktemp -d)"
+
+cleanup() {
+	rm -rf "${TMP_DIR}"
+}
+trap cleanup EXIT
+
+log 'Downloading gdrive binary'
+ARCHIVE_PATH="${TMP_DIR}/gdrive.tar.gz"
+wget "${URL_TO_GDRIVE_BINARY}" -O "${ARCHIVE_PATH}"
+
+log 'Extracting gdrive archive'
+tar -xzf "${ARCHIVE_PATH}" -C "${TMP_DIR}"
+
+log "Installing gdrive to ${INSTALL_PATH}"
+sudo install -m 0755 "${TMP_DIR}/gdrive" "${INSTALL_PATH}"
+
+if command -v gdrive >/dev/null && [[ "$(command -v gdrive)" == "${INSTALL_PATH}" ]]; then
+	log "gdrive installed to ${INSTALL_PATH}."
+	log "Run 'gdrive about' to verify setup or 'gdrive help' for usage information."
+else
+	log 'gdrive installation check failed'
+	exit 1
+fi

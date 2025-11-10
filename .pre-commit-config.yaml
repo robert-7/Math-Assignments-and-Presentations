@@ -17,7 +17,8 @@ repos:
       - id: pylint
         name: static analysis python files
         args: ["--ignore=tests/"]
-        additional_dependencies: ["numpy==1.26.1"]
+        # needed for "Solving Linear Relations using Linear Algebra/code/validate.py"
+        additional_dependencies: ["numpy==2.3.4"]
   - repo: https://github.com/pycqa/flake8
     rev: 7.3.0
     hooks:

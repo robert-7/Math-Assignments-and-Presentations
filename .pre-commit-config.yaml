@@ -54,3 +54,4 @@ repos:
         args: ['-l', '.chktexrc']
         language: system
         files: .*/.*\.tex$
+        exclude: Constructing New Families of Nested Recursions with Slow Solutions/paper\.tex

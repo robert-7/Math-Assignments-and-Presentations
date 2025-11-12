@@ -15,3 +15,24 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y chktex
       - uses: actions/setup-python@v5
       - uses: pre-commit/action@v3.0.0
+
+  build-and-upload:
+    needs: pre-commit
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run setup script
+        run: ./scripts/install.sh
+      - name: Build PDFs (and re-Build PDFs because sometimes first build misses things)
+        run: make build && make build
+      - name: Recreate gdrive account export from secret
+        shell: bash
+        run: |
+          echo "${GDRIVE_ACCOUNT_EXPORT_BASE64}" | base64 -d > /tmp/gdrive_export.tar
+        env:
+          GDRIVE_ACCOUNT_EXPORT_BASE64: ${{ secrets.GDRIVE_ACCOUNT_EXPORT_BASE64 }}
+      - name: Recreate GDrive account export from secret
+        run: gdrive account import /tmp/gdrive_export.tar
+      - name: Upload PDFs
+        run: make upload

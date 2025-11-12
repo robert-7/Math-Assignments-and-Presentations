@@ -5,11 +5,48 @@ log() {
 	printf '[install] %s\n' "$1"
 }
 
-log 'Updating apt package index'
-sudo apt update -y
+DO_LINT=false
+DO_BUILD=false
 
-log 'Installing chktex, shellcheck, and texlive-full'
-sudo apt install -y chktex shellcheck texlive-full
+while (($#)); do
+	case "$1" in
+		--lint)
+			DO_LINT=true
+			;;
+		--build)
+			DO_BUILD=true
+			;;
+		*)
+			echo "Usage: $0 [--lint] [--build]" >&2
+			exit 1
+			;;
+	esac
+	shift
+done
+
+# Default to installing everything if no flags are provided to maintain previous behaviour.
+if ! $DO_LINT && ! $DO_BUILD; then
+	DO_LINT=true
+	DO_BUILD=true
+fi
+
+PACKAGES=()
+if $DO_LINT; then
+	PACKAGES+=(chktex shellcheck)
+fi
+if $DO_BUILD; then
+	PACKAGES+=(texlive-full)
+fi
+
+if ((${#PACKAGES[@]})); then
+	log 'Updating apt package index'
+	sudo apt update -y
+
+	log "Installing packages: ${PACKAGES[*]}"
+	sudo apt install -y "${PACKAGES[@]}"
+else
+	log 'No packages requested via flags; skipping apt installation.'
+fi
 
 # Install gdrive
 URL_TO_GDRIVE_BINARY="https://github.com/glotlabs/gdrive/releases/download/3.9.1/gdrive_linux-x64.tar.gz"

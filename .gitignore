@@ -421,3 +421,6 @@ $RECYCLE.BIN/
 
 # These files are required for the Feathergraphics library
 !Two Proofs of Cayley's Formula for the Number of Trees/Feathergraphics/*.pdf
+
+# include .pdf files in all images/ directories
+!**/images/*.pdf

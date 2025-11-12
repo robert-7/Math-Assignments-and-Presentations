@@ -24,8 +24,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run setup script
         run: ./scripts/install.sh
-      - name: Build PDFs
-        run: make build
+      - name: Build PDFs (and re-Build PDFs because sometimes first build misses things)
+        run: make build && make build
       - name: Recreate gdrive account export from secret
         shell: bash
         run: |
